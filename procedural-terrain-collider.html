@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Procedural terrain collider for bullet</title>
+    <title>Procedural terrain collider for Bullet</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     <!-- Open Graph tags -->
                 
                                 <meta property="og:type" content="article"/>
-            <meta property="og:title" content="Procedural terrain collider for bullet"/>
+            <meta property="og:title" content="Procedural terrain collider for Bullet"/>
             <meta property="og:url" content="http://mua.github.io/procedural-terrain-collider.html"/>
             <meta property="og:description" content="Generating terrain entirely on the GPU is cool, however as pretty as it looks, in the end you need to interact with it. Bullet Physics engine provides very neat ways to define your own collider shapes. So I decided to port GPU code to C++ and use the output for ..."/>
         
@@ -80,8 +80,8 @@
                 <h1>
                     <a href="http://mua.github.io/procedural-terrain-collider.html"
                        rel="bookmark"
-                       title="Permalink to Procedural terrain collider for bullet">
-                        Procedural terrain collider for bullet
+                       title="Permalink to Procedural terrain collider for Bullet">
+                        Procedural terrain collider for Bullet
                     </a>
                 </h1>
             </header>
@@ -104,7 +104,7 @@
     	<a href="http://mua.github.io/tag/physics.html">Physics</a>
         </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>Generating terrain entirely on the GPU is cool, however as pretty as it looks, in the end you need to interact with it. Bullet Physics engine provides very neat ways to define your own collider shapes. So I decided to port GPU code to C++ and use the output for bullet shape.</p>
+                <p>Generating terrain entirely on the GPU is cool, however as pretty as it looks, in the end you need to interact with it. <a href="http://http://bulletphysics.org">Bullet</a> Physics engine provides very neat ways to define your own collider shapes. So I decided to port GPU code to C++ and use the output for bullet shape.</p>
 <p>Porting <a href="https://github.com/ashima/webgl-noise/blob/master/src/noise2D.glsl">noise</a> was easy since <a href="http://glm.g-truc.net/0.9.4/index.html">GLM</a> library has been designed to be as close as to shader code. You can checkout it on <a href="https://github.com/mua/Radial-Engine/blob/master/src/engine/reNoise.cpp">Github</a></p>
 <p>Now the fun part: <a href="https://github.com/mua/Radial-Engine/blob/master/src/engine/reBody.cpp#L290">Full code</a></p>
 <div class="highlight"><pre><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">processAllTriangles</span><span class="p">(</span><span class="n">btTriangleCallback</span><span class="o">*</span> <span class="n">callback</span><span class="p">,</span>
