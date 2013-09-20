@@ -307,7 +307,7 @@ img {
   padding: 4px;
   line-height: 1.428571429;
   background-color: #272b30;
-  border: 1px solid #dddddd;
+  border: 1px solid #1c1e22;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -623,7 +623,7 @@ pre {
   word-wrap: break-word;
   color: #3a3f44;
   background-color: #f5f5f5;
-  border: 1px solid #cccccc;
+  border: 1px solid #101214;
   border-radius: 4px;
 }
 pre.prettyprint {
@@ -4310,7 +4310,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   line-height: 1.428571429;
   background-color: #272b30;
-  border: 1px solid #dddddd;
+  border: 1px solid #1c1e22;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
