@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Procedural terrain collider for bullet</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+                
+                                <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Procedural terrain collider for bullet"/>
+            <meta property="og:url" content="/procedural-terrain-collider.html"/>
+            <meta property="og:description" content="Generating terrain entirely on the GPU is cool, however as pretty as it looks, in the end you need to interact with it. Bullet Physics engine provides very neat ways to define your own collider shapes. So I decided to port GPU code to C++ and use the output for ..."/>
+        
+        <!-- Bootstrap -->
+            <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+        <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+	<link href="/theme/css/sticky-footer.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+            <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="M. Utku Altınkaya ATOM Feed"/>
+        
+        <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-40192079-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+<div id="wrap">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="" class="navbar-brand">M. Utku Altınkaya</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+																							<li><a href="/pages/about.html">About</a></li>
+																				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	<!-- /.navbar -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/procedural-terrain-collider.html"
+                       rel="bookmark"
+                       title="Permalink to Procedural terrain collider for bullet">
+                        Procedural terrain collider for bullet
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+                        <footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Çar 05 Haziran 2013
+    </span>
+                    
+            
+    
+    <span class="label label-default">Tags</span>
+	<a href="/tag/opengl.html">OpenGL</a>
+            /
+    	<a href="/tag/c.html">C++</a>
+            /
+    	<a href="/tag/physics.html">Physics</a>
+        </footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Generating terrain entirely on the GPU is cool, however as pretty as it looks, in the end you need to interact with it. Bullet Physics engine provides very neat ways to define your own collider shapes. So I decided to port GPU code to C++ and use the output for bullet shape.</p>
+<p>Porting <a href="https://github.com/ashima/webgl-noise/blob/master/src/noise2D.glsl">noise</a> was easy since <a href="http://glm.g-truc.net/0.9.4/index.html">GLM</a> library has been designed to be as close as to shader code. You can checkout it on <a href="https://github.com/mua/Radial-Engine/blob/master/src/engine/reNoise.cpp">Github</a></p>
+<p>Now the fun part: <a href="https://github.com/mua/Radial-Engine/blob/master/src/engine/reBody.cpp#L290">Full code</a></p>
+<div class="highlight"><pre><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">processAllTriangles</span><span class="p">(</span><span class="n">btTriangleCallback</span><span class="o">*</span> <span class="n">callback</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">btVector3</span><span class="o">&amp;</span> <span class="n">aabbMin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">btVector3</span><span class="o">&amp;</span> <span class="n">aabbMax</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="n">reVec3</span> <span class="n">expand</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">reVec3</span> <span class="n">min</span> <span class="o">=</span> <span class="n">fromBullet</span><span class="p">(</span><span class="n">aabbMin</span><span class="p">)</span><span class="o">-</span><span class="n">expand</span><span class="p">,</span>  <span class="n">max</span> <span class="o">=</span> <span class="n">fromBullet</span><span class="p">(</span><span class="n">aabbMax</span><span class="p">)</span><span class="o">+</span><span class="n">expand</span><span class="p">;</span>
+
+    <span class="n">btVector3</span> <span class="n">c</span>  <span class="o">=</span> <span class="n">toBullet</span><span class="p">(</span><span class="n">calculateVertex</span><span class="p">(</span><span class="n">reVec3</span><span class="p">((</span><span class="n">min</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">max</span><span class="p">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">min</span><span class="p">.</span><span class="n">z</span><span class="o">+</span><span class="n">max</span><span class="p">.</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)));</span>
+    <span class="n">btVector3</span> <span class="n">bl</span> <span class="o">=</span> <span class="n">toBullet</span><span class="p">(</span><span class="n">calculateVertex</span><span class="p">(</span><span class="n">reVec3</span><span class="p">(</span><span class="n">min</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min</span><span class="p">.</span><span class="n">z</span><span class="p">)));</span>
+    <span class="n">btVector3</span> <span class="n">br</span> <span class="o">=</span> <span class="n">toBullet</span><span class="p">(</span><span class="n">calculateVertex</span><span class="p">(</span><span class="n">reVec3</span><span class="p">(</span><span class="n">min</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max</span><span class="p">.</span><span class="n">z</span><span class="p">)));</span>
+    <span class="n">btVector3</span> <span class="n">tl</span> <span class="o">=</span> <span class="n">toBullet</span><span class="p">(</span><span class="n">calculateVertex</span><span class="p">(</span><span class="n">reVec3</span><span class="p">(</span><span class="n">max</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min</span><span class="p">.</span><span class="n">z</span><span class="p">)));</span>
+    <span class="n">btVector3</span> <span class="n">tr</span> <span class="o">=</span> <span class="n">toBullet</span><span class="p">(</span><span class="n">calculateVertex</span><span class="p">(</span><span class="n">reVec3</span><span class="p">(</span><span class="n">max</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max</span><span class="p">.</span><span class="n">z</span><span class="p">)));</span>
+
+    <span class="n">btVector3</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">bl</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">br</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">callback</span><span class="o">-&gt;</span><span class="n">processTriangle</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tl</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">callback</span><span class="o">-&gt;</span><span class="n">processTriangle</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">br</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">callback</span><span class="o">-&gt;</span><span class="n">processTriangle</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tl</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">bl</span><span class="p">;</span>
+    <span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">callback</span><span class="o">-&gt;</span><span class="n">processTriangle</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Each time bullet queries out collision shape, the noise functions are used to get the vertices necessary and return triangles. One of the other cool things about this is, bullet actually queries with AABB(axis aligned bounding box) of interest, what we return depends on location of that AABB, we generate the surface inside of it, so the virtual resolution of our terrain is very very high, smoother simulation is a bonus.</p>
+<h2>Conclusion</h2>
+<p>Putting together a procedural terrain collider was easier than I thought, and bullet played with it pretty nicely. This still seems more and more like a very viable option for mobile games.</p>
+            </div>
+            <!-- /.entry-content -->
+                            <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'mutkuablog'; // required: replace example with your forum shortname
+            var disqus_identifier = 'procedural-terrain-collider';
+            var disqus_url = '/procedural-terrain-collider.html';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+			</div>
+			<div class="col-lg-3 well well-sm" id="sidebar">
+				<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+																<li class="list-group-item"><a href="https://github.com/mua"><i
+							class="icon-github-sign icon-large"></i>github
+					</a></li>
+									<li class="list-group-item"><a href="https://twitter.com/utkua"><i
+							class="icon-twitter-sign icon-large"></i>twitter
+					</a></li>
+									<li class="list-group-item"><a href="http://lnkd.in/bWMRpEk"><i
+							class="icon-linkedin-sign icon-large"></i>linkedin
+					</a></li>
+							
+            
+                                                                                                			
+																<li class="list-group-item"><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"><i class="icon-rss icon-large"></i>Feed</a></li>
+																							
+			
+            <li class="list-group-item"><a href="/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+                            <li class="list-group-item tag-1">
+                    <a href="/tag/c.html">
+                        C++
+                    </a>
+                </li>
+                            <li class="list-group-item tag-1">
+                    <a href="/tag/opengl.html">
+                        OpenGL
+                    </a>
+                </li>
+                            <li class="list-group-item tag-4">
+                    <a href="/tag/physics.html">
+                        Physics
+                    </a>
+                </li>
+            			
+        </ul>
+    </section>
+    
+                                    
+    <section>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="icon-github icon-large"></i>GitHub Repos</h4></li>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+            </ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if (!window.jXHR) {
+                    var jxhr = document.createElement('script');
+                    jxhr.type = 'text/javascript';
+                    jxhr.src = '/theme/js/jXHR.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(jxhr, s);
+                }
+
+                github.showRepos({
+                    user: 'mua',
+                    count: 5,
+                    skip_forks: false,
+					ignore: [ "mua.github.io" ],
+                    target: '#gh_repos'
+                });
+            });
+        </script>
+        <script src="/theme/js/github.js" type="text/javascript"></script>
+    </section>
+</aside>			</div>
+		</div>
+	</div>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/theme/js/bootstrap.min.js"></script>
+
+	<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+	<script src="/theme/js/respond.min.js"></script>
+	    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'mutkuablog'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+	</div>	
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">
+		
+        <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">
+			<img src="/theme/img/cc.png" class="cc">
+			<img src="/theme/img/by.png" class="cc">
+		</a>
+        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons License</a>		
+		</p>
+      </div>
+    
+</div>
+</body>
+</html>
