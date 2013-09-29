@@ -8,7 +8,7 @@ var gl;
 var canvas;
 function WebGLFw(canvas) {
 
-    var gl;
+    var gl = null;
 
     var names = ['webgl', 'moz-webgl', 'experimental-webgl'];
     for (var i=0; i<names.length; i++)
@@ -17,7 +17,11 @@ function WebGLFw(canvas) {
             if (gl) break;
         } catch (e) {};
 
-    console.log(gl);
+    if (!gl) {
+        if (confirm("Your browser does not seem to support webgl. Do you want to get more information ? "))
+            window.location = "http://get.webgl.org/";
+        return;
+    }
 
     function Shader(vs, fs) {
         var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
