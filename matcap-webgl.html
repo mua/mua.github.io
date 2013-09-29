@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Realistic Materials in OpenGL ES</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Realistic Materials in OpenGL ES"/>
+            <meta property="og:url" content="http://mua.github.io/matcap-webgl.html"/>
+            <meta property="og:description" content="With MatCap materials it is possbile to render sophisticated materials using very low GPU resources, it can be suitable for both WebGL and OpenGL ES applications which can live with its limitations."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://mua.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://mua.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mua.github.io/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="http://mua.github.io/theme/css/pygments.css?a=1" rel="stylesheet">
+	<link href="http://mua.github.io/theme/css/sticky-footer.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://mua.github.io/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+        <link href="http://mua.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="M. Utku Altınkaya ATOM Feed"/>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-40192079-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+<div id="wrap">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/" class="navbar-brand">M. Utku Altınkaya</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+							<li><a href="http://mua.github.io/pages/about.html">About</a></li>
+							<li><a href="http://mua.github.io/pages/opengl-es-matcap.html">MatCap with WebGL</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://mua.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	<!-- /.navbar -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://mua.github.io/matcap-webgl.html"
+                       rel="bookmark"
+                       title="Permalink to Realistic Materials in OpenGL ES">
+                        Realistic Materials in OpenGL ES
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Fri 27 September 2013
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://mua.github.io/tag/opengl.html">OpenGL</a>
+        /
+	<a href="http://mua.github.io/tag/glsl.html">GLSL</a>
+        /
+	<a href="http://mua.github.io/tag/webgl.html">WebGL</a>
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
+Since they looked so great, just like raytraced(after briefly blaming the developers of the application of witchcraft),
+I started researching the subject and ended up writing my own implementation.</p>
+<p><a class="btn btn-default" href="/pages/opengl-es-matcap.html">View demo</a></p>
+<h2>Matcap</h2>
+<p>Matcap(Material-Capture), is a technique of combining material properties and lighting information in an image.
+Basically image is interpreted as a hemi-sphere, each point on sphere is matched against a normal. When object is rendered
+with matcap material, normals are calculated for each fragment, and that information used to map matcap image and
+get fragment color.</p>
+<div class="thumbnail pull-right">
+    <img src="/models/matcap/generator8.jpg" class="img-circle pull-right" style="width: 64px; height: 64px"/>
+    <img src="/models/matcap/darker.jpg" class="img-circle pull-right" style="width: 64px; height: 64px"/>
+    <img src="/models/matcap/JG_Gold.png" class="img-circle pull-right" style="width: 64px; height: 64px"/>
+    <div class="clearfix text-center">
+        <small class="text-muted">Some matcap materials</small>
+    </div>
+</div>
+
+<div class="thumbnail pull-left" style="max-width: 50%;">
+    <img src="/images/Capture1.png" class="pull-left thumbnail" style="max-width: 100%;" />
+    <div class="clearfix text-center">
+        <small class="text-muted">Reflection and specular</small>
+    </div>
+</div>
+
+<p>Without actually making any lighting or reflection calculation in the shader, we are using a precalculated table,
+so very sophisticated looking rendering with reflection, subsurface scattering, specularity, becomes possible.</p>
+<div class="thumbnail pull-right" style="max-width: 50%;" >
+    <img src="/images/Capture3.png" class="pull-right" style="max-width: 100%;" />
+    <div class="clearfix text-center">
+        <small class="text-muted">Lights are embedded</small>
+    </div>
+</div>
+
+<h2>Limitations</h2>
+<p>However, since matcap is visual information of an object, seen in a certain camera angle and certain ligthing conditions,
+the material itself is actually not lit, meaning no actual lighting is done on the shader, the light is fixed in
+related to camera. When your camera moves, light also moves with it.</p>
+<p>Another limitation of matcap is not being able to use any kind of texture on MatCap image. Since matcap mapping is in relation
+to camera any texture you apply on to matcap material will look like environment mapping.</p>
+<div class="thumbnail pull-left" style="max-width: 50%;" >
+    <img src="/images/Capture4.png" class="pull-left" style="max-width: 100%;" />
+    <div class="clearfix text-center">
+        <small class="text-muted">Lights are embedded</small>
+    </div>
+</div>
+
+<h2>Shaders</h2>
+<p>In vertex shader, we first get the vertex normal attribute and move it into model(world) space and assign it to an
+interpolated vector.</p>
+<p>In fragment shader, the interpolated value of the normal is transformed into <em>camera space</em> and normalize.
+Each component of normal now in [-1,1] inverval, we move them into texture space [0,1] and ignore Z value.</p>
+<div class="clearfix">&nbsp</div>
+
+<h4>Vertex shader:</h4>
+<div class="highlight"><pre><span class="n">vNormal</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="k">vec3</span><span class="p">(</span><span class="n">world</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)));</span> <span class="c1">// Normal in model space</span>
+</pre></div>
+
+
+<h4>Fragment shader:</h4>
+<div class="highlight"><pre><span class="c1">// Move normal to view space</span>
+<span class="k">highp</span> <span class="k">vec2</span> <span class="n">muv</span> <span class="o">=</span> <span class="k">vec2</span><span class="p">(</span><span class="n">view</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">vNormal</span><span class="p">),</span> <span class="mo">0</span><span class="p">))</span><span class="o">*</span><span class="mf">0.5</span><span class="o">+</span><span class="k">vec2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="c1">// read texture inverting Y value</span>
+<span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">matcapTexture</span><span class="p">,</span> <span class="k">vec2</span><span class="p">(</span><span class="n">muv</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">muv</span><span class="p">.</span><span class="n">y</span><span class="p">));</span>
+</pre></div>
+
+
+<h2>Source code &amp; Demo</h2>
+<p>You try matcap materials in demo I wrote <a href="/pages/opengl-es-matcap.html">here</a>.
+You can also obtain source code from my <a href="https://github.com/mua/mua.github.io">Github repo</a>, or just view source of the page.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'mutkuablog'; // required: replace example with your forum shortname
+            var disqus_identifier = 'matcap-webgl';
+            var disqus_url = 'http://mua.github.io/matcap-webgl.html';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+			</div>
+			<div class="col-lg-3 well well-sm" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+					<li class="list-group-item"><a href="https://github.com/mua"><i
+							class="icon-github-sign icon-large"></i>github
+					</a></li>
+					<li class="list-group-item"><a href="https://twitter.com/utkua"><i
+							class="icon-twitter-sign icon-large"></i>twitter
+					</a></li>
+					<li class="list-group-item"><a href="http://lnkd.in/bWMRpEk"><i
+							class="icon-linkedin-sign icon-large"></i>linkedin
+					</a></li>
+					<li class="list-group-item"><a href="https://plus.google.com/103544190796724092468/?rel=author"><i
+							class="icon-google-plus-sign icon-large"></i>google-plus
+					</a></li>
+
+
+			
+					<li class="list-group-item"><a href="http://mua.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"><i class="icon-rss icon-large"></i>Feed</a></li>
+												
+			
+            <li class="list-group-item"><a href="http://mua.github.io/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+                <li class="list-group-item tag-1">
+                    <a href="http://mua.github.io/tag/c.html">
+                        C++
+                    </a>
+                </li>
+                <li class="list-group-item tag-1">
+                    <a href="http://mua.github.io/tag/opengl.html">
+                        OpenGL
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="http://mua.github.io/tag/physics.html">
+                        Physics
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="http://mua.github.io/tag/webgl.html">
+                        WebGL
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="http://mua.github.io/tag/glsl.html">
+                        GLSL
+                    </a>
+                </li>
+			
+        </ul>
+    </section>
+
+
+    <section>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="icon-github icon-large"></i>GitHub Repos</h4></li>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+    </ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if (!window.jXHR) {
+                    var jxhr = document.createElement('script');
+                    jxhr.type = 'text/javascript';
+                    jxhr.src = 'http://mua.github.io/theme/js/jXHR.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(jxhr, s);
+                }
+
+                github.showRepos({
+                    user: 'mua',
+                    count: 5,
+                    skip_forks: false,
+					ignore: [ "mua.github.io",  "pelican" ],
+                    target: '#gh_repos'
+                });
+            });
+        </script>
+        <script src="http://mua.github.io/theme/js/github.js" type="text/javascript"></script>
+    </section>
+</aside>			</div>
+		</div>
+	</div>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://mua.github.io/theme/js/bootstrap.min.js"></script>
+
+	<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+	<script src="http://mua.github.io/theme/js/respond.min.js"></script>
+    
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'mutkuablog'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</div>	
+    <div id="footer">
+      <div class="container clearfix">
+        <p class="text-muted credit pull-left">
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">
+                <img src="/theme/img/cc.png" class="cc">
+                <img src="/theme/img/by.png" class="cc">
+            </a>
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons License</a>
+		</p>
+        <p class="pull-right creditd">
+          This site is made with <a href="https://github.com/getpelican/pelican">Pelican</a>
+        </p>
+      </div>
+</div>
+</body>
+</html>

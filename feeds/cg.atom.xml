@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/cg.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2013-07-03T11:30:00+03:00</updated><entry><title>Including GLSL Shaders</title><link href="http://mua.github.io/including-glsl-shaders.html" rel="alternate"></link><updated>2013-07-03T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-07-03:including-glsl-shaders.html</id><summary type="html">&lt;p&gt;Shaders are combination of different effects, you may need skinning and shadows to render your character, but just diffuse textures for skymap, while doing a depth pass only, you do not need to render any textures but deformation is still needed for skinned meshes. More effects you have, more combinations you end up with. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/cg.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2013-09-27T11:30:00+03:00</updated><entry><title>Realistic Materials in OpenGL ES</title><link href="http://mua.github.io/matcap-webgl.html" rel="alternate"></link><updated>2013-09-27T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-09-27:matcap-webgl.html</id><summary type="html">&lt;p&gt;My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
+Since they looked so great, just like raytraced(after briefly blaming the developers of the application of witchcraft),
+I started researching the subject and ended up writing my own implementation.&lt;/p&gt;
+&lt;p&gt;&lt;a class="btn btn-default" href="/pages/opengl-es-matcap.html"&gt;View demo&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Matcap&lt;/h2&gt;
+&lt;p&gt;Matcap(Material-Capture), is a technique of combining material properties and lighting information in an image.
+Basically image is interpreted as a hemi-sphere, each point on sphere is matched against a normal. When object is rendered
+with matcap material, normals are calculated for each fragment, and that information used to map matcap image and
+get fragment color.&lt;/p&gt;
+&lt;div class="thumbnail pull-right"&gt;
+    &lt;img src="/models/matcap/generator8.jpg" class="img-circle pull-right" style="width: 64px; height: 64px"/&gt;
+    &lt;img src="/models/matcap/darker.jpg" class="img-circle pull-right" style="width: 64px; height: 64px"/&gt;
+    &lt;img src="/models/matcap/JG_Gold.png" class="img-circle pull-right" style="width: 64px; height: 64px"/&gt;
+    &lt;div class="clearfix text-center"&gt;
+        &lt;small class="text-muted"&gt;Some matcap materials&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="thumbnail pull-left" style="max-width: 50%;"&gt;
+    &lt;img src="/images/Capture1.png" class="pull-left thumbnail" style="max-width: 100%;" /&gt;
+    &lt;div class="clearfix text-center"&gt;
+        &lt;small class="text-muted"&gt;Reflection and specular&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Without actually making any lighting or reflection calculation in the shader, we are using a precalculated table,
+so very sophisticated looking rendering with reflection, subsurface scattering, specularity, becomes possible.&lt;/p&gt;
+&lt;div class="thumbnail pull-right" style="max-width: 50%;" &gt;
+    &lt;img src="/images/Capture3.png" class="pull-right" style="max-width: 100%;" /&gt;
+    &lt;div class="clearfix text-center"&gt;
+        &lt;small class="text-muted"&gt;Lights are embedded&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Limitations&lt;/h2&gt;
+&lt;p&gt;However, since matcap is visual information of an object, seen in a certain camera angle and certain ligthing conditions,
+the material itself is actually not lit, meaning no actual lighting is done on the shader, the light is fixed in
+related to camera. When your camera moves, light also moves with it.&lt;/p&gt;
+&lt;p&gt;Another limitation of matcap is not being able to use any kind of texture on MatCap image. Since matcap mapping is in relation
+to camera any texture you apply on to matcap material will look like environment mapping.&lt;/p&gt;
+&lt;div class="thumbnail pull-left" style="max-width: 50%;" &gt;
+    &lt;img src="/images/Capture4.png" class="pull-left" style="max-width: 100%;" /&gt;
+    &lt;div class="clearfix text-center"&gt;
+        &lt;small class="text-muted"&gt;Lights are embedded&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Shaders&lt;/h2&gt;
+&lt;p&gt;In vertex shader, we first get the vertex normal attribute and move it into model(world) space and assign it to an
+interpolated vector.&lt;/p&gt;
+&lt;p&gt;In fragment shader, the interpolated value of the normal is transformed into &lt;em&gt;camera space&lt;/em&gt; and normalize.
+Each component of normal now in [-1,1] inverval, we move them into texture space [0,1] and ignore Z value.&lt;/p&gt;
+&lt;div class="clearfix"&gt;&amp;nbsp&lt;/div&gt;
+
+&lt;h4&gt;Vertex shader:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vNormal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;vec3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;world&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;vec4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt; &lt;span class="c1"&gt;// Normal in model space&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Fragment shader:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// Move normal to view space&lt;/span&gt;
+&lt;span class="k"&gt;highp&lt;/span&gt; &lt;span class="k"&gt;vec2&lt;/span&gt; &lt;span class="n"&gt;muv&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;vec2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;vec4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vNormal&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mo"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;vec2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="c1"&gt;// read texture inverting Y value&lt;/span&gt;
+&lt;span class="n"&gt;gl_FragColor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;texture2D&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matcapTexture&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;vec2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;muv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;muv&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Source code &amp;amp; Demo&lt;/h2&gt;
+&lt;p&gt;You try matcap materials in demo I wrote &lt;a href="/pages/opengl-es-matcap.html"&gt;here&lt;/a&gt;.
+You can also obtain source code from my &lt;a href="https://github.com/mua/mua.github.io"&gt;Github repo&lt;/a&gt;, or just view source of the page.&lt;/p&gt;</summary><category term="OpenGL"></category><category term="GLSL"></category><category term="WebGL"></category></entry><entry><title>Including GLSL Shaders</title><link href="http://mua.github.io/including-glsl-shaders.html" rel="alternate"></link><updated>2013-07-03T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-07-03:including-glsl-shaders.html</id><summary type="html">&lt;p&gt;Shaders are combination of different effects, you may need skinning and shadows to render your character, but just diffuse textures for skymap, while doing a depth pass only, you do not need to render any textures but deformation is still needed for skinned meshes. More effects you have, more combinations you end up with. &lt;/p&gt;
 &lt;p&gt;One solution to this problem is writing a mega-shader, a shader combines multiple effects but choses which ones to run using conditional blocks. However even if you are using uniform variables which does not change until rasterization is complete, you still can suffer from performance penalty by changing uniforms in some driver implementations.&lt;a href="http://www.opengl.org/discussion_boards/showthread.php/152817-nVidia-FP-uniforms-driver-optimization-lags?p=1094138#post1094138"&gt;[1]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Non-implementation dependent solution is to use preprocessor directives in GLSL, and generating shaders for your effect combinations. This way we can organize code into different mini-shaders combined in compile time.&lt;/p&gt;
 &lt;p&gt;For example:&lt;/p&gt;

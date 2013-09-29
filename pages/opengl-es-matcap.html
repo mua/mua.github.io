@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>MatCap with WebGL</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="MatCap with WebGL"/>
+            <meta property="og:url" content="http://mua.github.io/pages/opengl-es-matcap.html"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://mua.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://mua.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://mua.github.io/theme/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="http://mua.github.io/theme/css/pygments.css?a=1" rel="stylesheet">
+	<link href="http://mua.github.io/theme/css/sticky-footer.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://mua.github.io/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+        <link href="http://mua.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="M. Utku Altınkaya ATOM Feed"/>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-40192079-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+<div id="wrap">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/" class="navbar-brand">M. Utku Altınkaya</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+							<li><a href="http://mua.github.io/pages/about.html">About</a></li>
+							<li><a href="http://mua.github.io/pages/opengl-es-matcap.html">MatCap with WebGL</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://mua.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	<!-- /.navbar -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+    <section id="content" class="body">
+        <h1 class="entry-title">MatCap with WebGL</h1>
+        <div class="entry-content">
+            <script src="/js/webglfw.js"></script>
+
+<script src="/js/gl_matrix.js"></script>
+
+<script src="/js/jquery.mousewheel.js"></script>
+
+<div class="well" style="position: relative">
+    <canvas id="webGlCanvas" style="border: 1px solid black; width: 100%; height: 500px;">
+    </canvas>
+    <div class="btn-group" style="position: absolute; top: 25px; left: 25px;">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Change model<span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" id="model-menu">
+        </ul>
+    </div>
+    <button type="button" class="btn btn-primary" style="position: absolute; top: 70px; left: 25px;" id="reset">Reset camera</button>
+    <div class="panel panel-default">
+      <div class="panel-heading">Select material</div>
+      <div class="panel-body" id="matcap-list">
+      </div>
+    </div>
+</div>
+
+<!-- Fragment shader program -->
+
+<script id="shader-fs" type="x-shader/x-fragment">
+  uniform highp mat4 view, projection;
+  uniform sampler2D matcapTexture;
+  varying highp vec3 vNormal;
+
+  void main(void) {
+    highp vec2 muv = vec2(view * vec4(normalize(vNormal), 0))*0.5+vec2(0.5,0.5);
+    // read texture inverting Y value
+    gl_FragColor = texture2D(matcapTexture, vec2(muv.x, 1.0-muv.y));
+  }
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+  attribute highp vec3 position, normal;
+  uniform highp mat4 projection, view, world;
+  varying highp vec3 vNormal;
+
+  void main(void) {
+    gl_Position = projection * view * world * vec4(position, 1.0);
+    vNormal = normalize(normal);
+  }
+</script>
+
+<script>
+$(function () {
+    var canvas = document.getElementById("webGlCanvas");
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    var fw = new WebGLFw(canvas);
+    var gl = fw.gl;
+
+    $.get("/models/index.json", function(list) {
+        $(list).each(function (i, v) {
+            $("<li></li>").append($("<a></a>").click(function () {
+                var newModel = new fw.Model("/models/"+v);
+                if (model) newModel.material = model.material;
+                model = newModel;
+            }).text(v.match(/([^/]+)[.]/)[1])).appendTo($("#model-menu"));
+        });
+    }, "json");
+
+    $.get("/models/matcap/index.json", function(list) {
+        $(list).each(function (i, v) {
+            var img = $("<img/>");
+            img.attr("src", "/models/matcap/"+v).addClass("matcap-image").addClass("img-circle").css("cursor", "pointer");
+            $("#matcap-list").append(img);
+            img.click(function () {
+                model.material.maps[0] = new fw.Texture("matcapTexture", $(this).attr("src"));
+            });
+            $("#matcap-list img:eq(3)").trigger("click");
+        });
+    }, "json");
+
+    var world = mat4.create();
+
+    function setup(shader) {
+        gl.useProgram(shader.program);
+        camera.assign(shader);
+        gl.uniformMatrix4fv(shader.world, false, world);
+    }
+
+    function render() {
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.clearColor(0.65, 0.75, 0.8, 1.0);
+        setup(fw.defaultShader)
+        grid.render(fw.defaultShader);
+        setup(shader);
+        model.render(shader);
+        gl.flush();
+    }
+
+    var shader = new fw.Shader($("#shader-vs").html(), $("#shader-fs").html());
+    var grid = new fw.Grid();
+    var model = new fw.Model("/models/monkey.obj");
+    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    gl.enable(gl.DEPTH_TEST);
+    gl.cullFace(gl.BACK);
+    window.requestAnimationFrame(function () {
+        render();
+        window.requestAnimationFrame(arguments.callee);
+    });
+    camera = new fw.Camera();
+
+    var lastPos = null, delta = vec3.create(), mode = null;
+    $(canvas).mousedown(function (e) {
+        lastPos = vec2.fromValues(e.screenX, e.screenY);
+        mode = (e.button == 1 ? "pan" : "rotate");
+        return false;
+    }).mousewheel(function(event, delta, deltaX, deltaY) {
+        camera.distance += deltaY / 5.0;
+        camera.update();
+        return false;
+    });
+
+    $("body").mousemove(function (e) {
+        if (lastPos) {
+            var npos = vec2.fromValues(e.screenX, e.screenY);
+            vec2.sub(delta, npos, lastPos);
+            lastPos = npos;
+            if (mode == "rotate") {
+                camera.rotY += delta[0] / 250.0;
+                camera.rotX += delta[1] / 250.0;
+            }
+            if (mode == "pan") {
+                var a = mat4.create();
+                mat4.invert(a, camera.view);
+                var translation = vec4.create();
+                vec4.transformMat4(translation, vec4.fromValues(delta[0]*camera.distance/500,
+                        -delta[1]*camera.distance/500, 0, 0), a);
+                vec3.add(camera.lookAt, camera.lookAt, translation);
+            }
+            camera.update();
+            return false;
+        }
+    }).mouseup(function () {
+        lastPos = null;
+        return false;
+    });
+
+    $("#reset").click(function () {
+        camera.distance = 5;
+        vec3.set(camera.lookAt, 0, 0, 0);
+        camera.rotX = 1;
+        camera.rotY = -1;
+        camera.update()
+    });
+
+});
+</script>
+
+<h2>Source code &amp; Article</h2>
+<p>You can read the article I wrote about MatCap and Webgl <a href="/matcap-webgl.html">here</a>.
+You can also obtain source code from my <a href="https://github.com/mua/mua.github.io">Github repo</a>, or just view source of this page.</p>
+<h4>Model credits</h4>
+<ul>
+<li>Horse: <a href="http://www.blendswap.com/blends/view/47256">GWinna</a></li>
+<li>Dodge Challenger STR8: <a href="http://www.turbosquid.com/Search/Artists/mech4rhork">mech4rhork</a></li>
+<li>Monkey: <a href="http://en.wikipedia.org/wiki/Suzanne_%28Blender_primitive%29#Suzanne">Blender</a></li>
+</ul>
+        </div>
+    </section>
+			</div>
+			<div class="col-lg-3 well well-sm" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+					<li class="list-group-item"><a href="https://github.com/mua"><i
+							class="icon-github-sign icon-large"></i>github
+					</a></li>
+					<li class="list-group-item"><a href="https://twitter.com/utkua"><i
+							class="icon-twitter-sign icon-large"></i>twitter
+					</a></li>
+					<li class="list-group-item"><a href="http://lnkd.in/bWMRpEk"><i
+							class="icon-linkedin-sign icon-large"></i>linkedin
+					</a></li>
+					<li class="list-group-item"><a href="https://plus.google.com/103544190796724092468/?rel=author"><i
+							class="icon-google-plus-sign icon-large"></i>google-plus
+					</a></li>
+
+
+			
+					<li class="list-group-item"><a href="http://mua.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"><i class="icon-rss icon-large"></i>Feed</a></li>
+												
+			
+            <li class="list-group-item"><a href="http://mua.github.io/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+                <li class="list-group-item tag-1">
+                    <a href="http://mua.github.io/tag/c.html">
+                        C++
+                    </a>
+                </li>
+                <li class="list-group-item tag-1">
+                    <a href="http://mua.github.io/tag/opengl.html">
+                        OpenGL
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="http://mua.github.io/tag/physics.html">
+                        Physics
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="http://mua.github.io/tag/webgl.html">
+                        WebGL
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="http://mua.github.io/tag/glsl.html">
+                        GLSL
+                    </a>
+                </li>
+			
+        </ul>
+    </section>
+
+
+    <section>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="icon-github icon-large"></i>GitHub Repos</h4></li>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+    </ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if (!window.jXHR) {
+                    var jxhr = document.createElement('script');
+                    jxhr.type = 'text/javascript';
+                    jxhr.src = 'http://mua.github.io/theme/js/jXHR.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(jxhr, s);
+                }
+
+                github.showRepos({
+                    user: 'mua',
+                    count: 5,
+                    skip_forks: false,
+					ignore: [ "mua.github.io",  "pelican" ],
+                    target: '#gh_repos'
+                });
+            });
+        </script>
+        <script src="http://mua.github.io/theme/js/github.js" type="text/javascript"></script>
+    </section>
+</aside>			</div>
+		</div>
+	</div>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://mua.github.io/theme/js/bootstrap.min.js"></script>
+
+	<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+	<script src="http://mua.github.io/theme/js/respond.min.js"></script>
+    
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'mutkuablog'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</div>	
+    <div id="footer">
+      <div class="container clearfix">
+        <p class="text-muted credit pull-left">
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">
+                <img src="/theme/img/cc.png" class="cc">
+                <img src="/theme/img/by.png" class="cc">
+            </a>
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons License</a>
+		</p>
+        <p class="pull-right creditd">
+          This site is made with <a href="https://github.com/getpelican/pelican">Pelican</a>
+        </p>
+      </div>
+</div>
+</body>
+</html>

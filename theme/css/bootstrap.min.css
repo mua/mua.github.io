@@ -306,7 +306,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #272b30;
+  background-color: #32383e;
   border: 1px solid #1c1e22;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4309,7 +4309,7 @@ a.list-group-item.active > .badge,
 .thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #272b30;
+  background-color: #32383e;
   border: 1px solid #1c1e22;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
