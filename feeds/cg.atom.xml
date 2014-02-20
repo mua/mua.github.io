@@ -28,7 +28,7 @@
 interpreted languages provided enough performance because they were either used for IO bound applications like web or
 OS API bound applications like desktop. But the game experience is effected by performance directly, I am not just
 talking about visuals or FPS, but very tiny amount of lag in the controller can ruin the gaming experience severely.&lt;/p&gt;
-&lt;h3&gt;Avoiding Stutter and lag, memory management&lt;/h3&gt;
+&lt;h3&gt;Avoiding stutter and lag&lt;/h3&gt;
 &lt;p&gt;All dynamic languages have a form of garbage collector, which manages your memory. Which ultimately means
 not just both allocation and deallocation have higher overhead, but the garbage collection process is unpredictible, you
 experience sudden lag, shutter in your game. Amount of this time become less noticable visually, however input
