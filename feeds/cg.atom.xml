@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/cg.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2014-02-19T11:30:00+02:00</updated><entry><title>New Game Engine</title><link href="http://mua.github.io/new-engine.html" rel="alternate"></link><updated>2014-02-19T11:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-19:new-engine.html</id><summary type="html">&lt;p&gt;I've been working on a new game engine(not Radial engine) and its editor for quite a while now. What I want is a C++ engine, supporting both inheritance and composition.&lt;/p&gt;
 &lt;p&gt;My goals are:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;You must be able to do anything even game logic using C++ code&lt;/li&gt;
+&lt;li&gt;I must be able to do anything even game logic using C++ code&lt;/li&gt;
 &lt;li&gt;Better data model and modifier classes for the editor making it much easier to add new features&lt;/li&gt;
 &lt;li&gt;C++11 standard rocks, use it more, especially closures and shared_ptr&lt;/li&gt;
 &lt;li&gt;Simplified object model for the engine itself, anything is a container now&lt;/li&gt;
@@ -11,7 +11,7 @@
 &lt;li&gt;Better serialization&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="Image" src="images/shot1.png" /&gt;&lt;/p&gt;
-&lt;p&gt;While it is far from alpha, I am using it for upcoming space game we are developing. Here are the current impoemented features so far:&lt;/p&gt;
+&lt;p&gt;While it is far from alpha, I am using it for upcoming space game we are developing. Here are the current implemented features so far:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Viewport&lt;/li&gt;
 &lt;li&gt;Importer and file watchers&lt;/li&gt;
