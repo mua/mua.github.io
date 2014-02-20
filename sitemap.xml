@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mua.github.io/index.html</loc>
-<lastmod>2013-10-02T04:20:59-00:00</lastmod>
+<lastmod>2014-02-20T04:53:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/archives.html</loc>
-<lastmod>2013-10-02T04:20:59-00:00</lastmod>
+<lastmod>2014-02-20T04:53:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/tags.html</loc>
-<lastmod>2013-10-02T04:20:59-00:00</lastmod>
+<lastmod>2014-02-20T04:53:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/categories.html</loc>
-<lastmod>2013-10-02T04:20:59-00:00</lastmod>
+<lastmod>2014-02-20T04:53:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://mua.github.io/pages/opengl-es-matcap.html</loc>
 <lastmod>2013-07-01T10:20:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mua.github.io/new-engine.html</loc>
+<lastmod>2014-02-19T11:30:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mua.github.io/native-matters.html</loc>
+<lastmod>2014-02-18T14:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -75,14 +89,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mua.github.io/category/cg.html</loc>
-<lastmod>2013-09-27T11:30:00-00:00</lastmod>
+<lastmod>2014-02-19T11:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/tag/glsl.html</loc>
-<lastmod>2013-09-27T11:30:00-00:00</lastmod>
+<lastmod>2014-02-19T11:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -95,8 +109,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mua.github.io/tag/physics.html</loc>
-<lastmod>2013-06-05T12:30:00-00:00</lastmod>
+<loc>http://mua.github.io/tag/opengl.html</loc>
+<lastmod>2014-02-19T11:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -109,15 +123,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mua.github.io/tag/opengl.html</loc>
-<lastmod>2013-09-27T11:30:00-00:00</lastmod>
+<loc>http://mua.github.io/tag/game-engine.html</loc>
+<lastmod>2014-02-19T11:30:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mua.github.io/tag/physics.html</loc>
+<lastmod>2013-06-05T12:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/author/m-utku-altinkaya.html</loc>
-<lastmod>2013-09-27T11:30:00-00:00</lastmod>
+<lastmod>2014-02-19T11:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

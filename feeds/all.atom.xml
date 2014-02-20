@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/all.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2013-09-27T11:30:00+03:00</updated><entry><title>Realistic Materials in OpenGL ES</title><link href="http://mua.github.io/matcap-webgl.html" rel="alternate"></link><updated>2013-09-27T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-09-27:matcap-webgl.html</id><summary type="html">&lt;p&gt;My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/all.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2014-02-19T11:30:00+02:00</updated><entry><title>New Game Engine</title><link href="http://mua.github.io/new-engine.html" rel="alternate"></link><updated>2014-02-19T11:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-19:new-engine.html</id><summary type="html">&lt;p&gt;I've been working on a new game engine(not Radial engine) and its editor for quite a while now. What I want is a C++ engine, supporting both inheritance and composition.&lt;/p&gt;
+&lt;p&gt;My goals are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You must be able to do anything even game logic using C++ code&lt;/li&gt;
+&lt;li&gt;Better data model and modifier classes for the editor making it much easier to add new features&lt;/li&gt;
+&lt;li&gt;C++11 standard rocks, use it more, especially closures and shared_ptr&lt;/li&gt;
+&lt;li&gt;Simplified object model for the engine itself, anything is a container now&lt;/li&gt;
+&lt;li&gt;Resource system supporting reference/instance mechanism&lt;/li&gt;
+&lt;li&gt;Generic property editors makes life much easier&lt;/li&gt;
+&lt;li&gt;Better serialization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Image" src="images/shot1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;While it is far from alpha, I am using it for upcoming space game we are developing. Here are the current impoemented features so far:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Viewport&lt;/li&gt;
+&lt;li&gt;Importer and file watchers&lt;/li&gt;
+&lt;li&gt;Transformation gizmos&lt;/li&gt;
+&lt;li&gt;Undo-redo mechanism&lt;/li&gt;
+&lt;li&gt;Scenegraph models&lt;/li&gt;
+&lt;li&gt;Drag drop&lt;/li&gt;
+&lt;li&gt;Basic file operations&lt;/li&gt;
+&lt;li&gt;Property editor&lt;/li&gt;
+&lt;li&gt;Particle engine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I am working on material system right now, while I can import materials in a simple format, I will implement complicated shader data as properties and can be attached to renderables.&lt;/p&gt;</summary><category term="OpenGL"></category><category term="GLSL"></category><category term="game-engine"></category></entry><entry><title>Native Matters</title><link href="http://mua.github.io/native-matters.html" rel="alternate"></link><updated>2014-02-18T14:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-18:native-matters.html</id><summary type="html">&lt;h3&gt;Performance&lt;/h3&gt;
+&lt;p&gt;Software development evolved into more dynamic language oriented in the recent 10 years. For most of the stuff,
+interpreted languages provided enough performance because they were either used for IO bound applications like web or
+OS API bound applications like desktop. But the game experience is effected by performance directly, I am not just
+talking about visuals or FPS, but very tiny amount of lag in the controller can ruin the gaming experience severely.&lt;/p&gt;
+&lt;h3&gt;Avoiding Stutter and lag, memory management&lt;/h3&gt;
+&lt;p&gt;All dynamic languages have a form of garbage collector, which manages your memory. Which ultimately means
+not just both allocation and deallocation have higher overhead, but the garbage collection process is unpredictible, you
+experience sudden lag, shutter in your game. Amount of this time become less noticable visually, however input
+lag is still there, and defines how fluent your game is. The worse part is it is unpredictible, constant lag of 10ms is better than having random 30ms,
+randomness distrupts the fluency of the game. You may try to lessen this effect by using allocation pools, and not creating
+object or releasing them, but by doing that you either sacrifice memory or the variety of your objects in your game,
+which means more generic approaches, which means more glue code, or branching. This is not a battle you can just win as long as GC is there.&lt;/p&gt;
+&lt;h3&gt;Not being inside a sandbox&lt;/h3&gt;
+&lt;p&gt;Dynamic languages provide a controlled environment and limits your access to the OS API. Which does not just takes away
+significant portion of your developer powers, but also limits the amount of optimizations you can come up with. You cannot
+possibly implement alternatives as fast as engine level components. That means your games will look quite similar to others using
+the same engine.&lt;/p&gt;</summary><category term="OpenGL"></category><category term="GLSL"></category><category term="game-engine"></category></entry><entry><title>Realistic Materials in OpenGL ES</title><link href="http://mua.github.io/matcap-webgl.html" rel="alternate"></link><updated>2013-09-27T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-09-27:matcap-webgl.html</id><summary type="html">&lt;p&gt;My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
 Since they looked so great, just like raytraced(after briefly blaming the developers of the application of witchcraft),
 I started researching the subject and ended up writing my own implementation.&lt;/p&gt;
 &lt;p&gt;&lt;a class="btn btn-default" href="/pages/opengl-es-matcap.html"&gt;View demo&lt;/a&gt;&lt;/p&gt;
