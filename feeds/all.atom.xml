@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/all.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2014-02-19T11:30:00+02:00</updated><entry><title>Blocking Bad</title><link href="http://mua.github.io/blocking-bad.html" rel="alternate"></link><updated>2014-02-19T11:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-19:blocking-bad.html</id><summary type="html">&lt;p&gt;&lt;img src="/images/scrshot2.png" class="thumbnail pull-right col-sm-3" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Blocking Bad&lt;/strong&gt; is a tetris clone which chooses he worst possible piece. Idea is not new,
-are few examples of it.
-&lt;a href="http://qntm.org/files/hatetris/hatetris.html"&gt;hateris&lt;/a&gt;, &lt;a href="http://blahg.res0l.net/2009/01/bastet-bastard-tetris/"&gt;bastet&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;I've been asked to implement such a thing in &lt;a href="http://love2d.org/"&gt;LÖVE&lt;/a&gt; as a challange. It uses a minmax approach to find
-worst possible piece.&lt;/p&gt;
-&lt;p&gt;&lt;a class="btn btn-default" href="https://github.com/mua/BlockingBad/releases/download/0.1/BlockingBad.exe"&gt;Download binary&lt;/a&gt;
-&lt;a class="btn btn-success" href="https://github.com/mua/BlockingBad"&gt;Get source&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/scrshot.png" /&gt;&lt;/p&gt;</summary><category term="2d"></category></entry><entry><title>New Game Engine</title><link href="http://mua.github.io/new-engine.html" rel="alternate"></link><updated>2014-02-19T11:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-19:new-engine.html</id><summary type="html">&lt;p&gt;I've been working on a new game engine(not Radial engine) and its editor for quite a while now. What I want is a C++ engine, supporting both inheritance and composition.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>M. Utku Altınkaya</title><link href="http://mua.github.io/" rel="alternate"></link><link href="http://mua.github.io/feeds/all.atom.xml" rel="self"></link><id>http://mua.github.io/</id><updated>2014-02-19T11:30:00+02:00</updated><entry><title>New Game Engine</title><link href="http://mua.github.io/new-engine.html" rel="alternate"></link><updated>2014-02-19T11:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-19:new-engine.html</id><summary type="html">&lt;p&gt;I've been working on a new game engine(not Radial engine) and its editor for quite a while now. What I want is a C++ engine, supporting both inheritance and composition.&lt;/p&gt;
 &lt;p&gt;My goals are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;I must be able to do anything even game logic using C++ code&lt;/li&gt;
@@ -48,7 +40,15 @@ which means more generic approaches, which means more glue code, or branching. T
 &lt;p&gt;Dynamic languages provide a controlled environment and limits your access to the OS API. Which does not just takes away
 significant portion of your developer powers, but also limits the amount of optimizations you can come up with. You cannot
 possibly implement alternatives as fast as engine level components. That means your games will look quite similar to others using
-the same engine.&lt;/p&gt;</summary><category term="OpenGL"></category><category term="GLSL"></category><category term="game-engine"></category></entry><entry><title>Realistic Materials in OpenGL ES</title><link href="http://mua.github.io/matcap-webgl.html" rel="alternate"></link><updated>2013-09-27T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-09-27:matcap-webgl.html</id><summary type="html">&lt;p&gt;My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
+the same engine.&lt;/p&gt;</summary><category term="OpenGL"></category><category term="GLSL"></category><category term="game-engine"></category></entry><entry><title>Blocking Bad</title><link href="http://mua.github.io/blocking-bad.html" rel="alternate"></link><updated>2014-02-15T11:30:00+02:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2014-02-15:blocking-bad.html</id><summary type="html">&lt;p&gt;&lt;img src="/images/scrshot2.png" class="thumbnail pull-right col-sm-3" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Blocking Bad&lt;/strong&gt; is a tetris clone which chooses he worst possible piece. Idea is not new,
+are few examples of it.
+&lt;a href="http://qntm.org/files/hatetris/hatetris.html"&gt;hateris&lt;/a&gt;, &lt;a href="http://blahg.res0l.net/2009/01/bastet-bastard-tetris/"&gt;bastet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I've been asked to implement such a thing in &lt;a href="http://love2d.org/"&gt;LÖVE&lt;/a&gt; as a challange. It uses a minmax approach to find
+worst possible piece.&lt;/p&gt;
+&lt;p&gt;&lt;a class="btn btn-default" href="https://github.com/mua/BlockingBad/releases/download/0.1/BlockingBad.exe"&gt;Download binary&lt;/a&gt;
+&lt;a class="btn btn-success" href="https://github.com/mua/BlockingBad"&gt;Get source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/scrshot.png" /&gt;&lt;/p&gt;</summary><category term="2d"></category></entry><entry><title>Realistic Materials in OpenGL ES</title><link href="http://mua.github.io/matcap-webgl.html" rel="alternate"></link><updated>2013-09-27T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-09-27:matcap-webgl.html</id><summary type="html">&lt;p&gt;My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
 Since they looked so great, just like raytraced(after briefly blaming the developers of the application of witchcraft),
 I started researching the subject and ended up writing my own implementation.&lt;/p&gt;
 &lt;p&gt;&lt;a class="btn btn-default" href="/pages/opengl-es-matcap.html"&gt;View demo&lt;/a&gt;&lt;/p&gt;

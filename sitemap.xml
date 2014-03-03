@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mua.github.io/index.html</loc>
-<lastmod>2014-03-03T07:22:49-00:00</lastmod>
+<lastmod>2014-03-03T07:24:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/archives.html</loc>
-<lastmod>2014-03-03T07:22:49-00:00</lastmod>
+<lastmod>2014-03-03T07:24:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/tags.html</loc>
-<lastmod>2014-03-03T07:22:49-00:00</lastmod>
+<lastmod>2014-03-03T07:24:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/categories.html</loc>
-<lastmod>2014-03-03T07:22:49-00:00</lastmod>
+<lastmod>2014-03-03T07:24:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -46,13 +46,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mua.github.io/blocking-bad.html</loc>
-<lastmod>2014-02-19T11:30:00-00:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://mua.github.io/new-engine.html</loc>
 <lastmod>2014-02-19T11:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -62,6 +55,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://mua.github.io/native-matters.html</loc>
 <lastmod>2014-02-18T14:30:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mua.github.io/blocking-bad.html</loc>
+<lastmod>2014-02-15T11:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -103,7 +103,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mua.github.io/category/games.html</loc>
-<lastmod>2014-02-19T11:30:00-00:00</lastmod>
+<lastmod>2014-02-15T11:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -138,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mua.github.io/tag/2d.html</loc>
-<lastmod>2014-02-19T11:30:00-00:00</lastmod>
+<lastmod>2014-02-15T11:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
