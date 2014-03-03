@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mua.github.io/index.html</loc>
-<lastmod>2014-03-03T07:31:27-00:00</lastmod>
+<lastmod>2014-03-03T10:01:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/archives.html</loc>
-<lastmod>2014-03-03T07:31:27-00:00</lastmod>
+<lastmod>2014-03-03T10:01:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/tags.html</loc>
-<lastmod>2014-03-03T07:31:27-00:00</lastmod>
+<lastmod>2014-03-03T10:01:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mua.github.io/categories.html</loc>
-<lastmod>2014-03-03T07:31:27-00:00</lastmod>
+<lastmod>2014-03-03T10:01:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
