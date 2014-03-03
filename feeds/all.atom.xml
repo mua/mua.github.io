@@ -46,7 +46,7 @@ are few examples of it like
 &lt;a href="http://qntm.org/files/hatetris/hatetris.html"&gt;hateris&lt;/a&gt;, &lt;a href="http://blahg.res0l.net/2009/01/bastet-bastard-tetris/"&gt;bastet&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I've been asked to implement such a thing in &lt;a href="http://love2d.org/"&gt;LÖVE&lt;/a&gt; as a challange. It uses a minmax approach to find
 worst possible piece.&lt;/p&gt;
-&lt;p&gt;&lt;a class="btn btn-default" href="https://github.com/mua/BlockingBad/releases/download/0.1/BlockingBad.exe"&gt;Download binary&lt;/a&gt;
+&lt;p&gt;&lt;a class="btn btn-default" href="https://github.com/mua/BlockingBad/releases/download/0.1/BlockingBad.zip"&gt;Download binary&lt;/a&gt;
 &lt;a class="btn btn-success" href="https://github.com/mua/BlockingBad"&gt;Get source&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/scrshot.png" /&gt;&lt;/p&gt;</summary><category term="2d"></category></entry><entry><title>Realistic Materials in OpenGL ES</title><link href="http://mua.github.io/matcap-webgl.html" rel="alternate"></link><updated>2013-09-27T11:30:00+03:00</updated><author><name>M. Utku Altınkaya</name></author><id>tag:mua.github.io,2013-09-27:matcap-webgl.html</id><summary type="html">&lt;p&gt;My brother has shown me a sculpting application with ability to assign materials from images and render them in real-time.
 Since they looked so great, just like raytraced(after briefly blaming the developers of the application of witchcraft),

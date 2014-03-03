@@ -5,6 +5,6 @@ are few examples of it like
 &lt;a href="http://qntm.org/files/hatetris/hatetris.html"&gt;hateris&lt;/a&gt;, &lt;a href="http://blahg.res0l.net/2009/01/bastet-bastard-tetris/"&gt;bastet&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I've been asked to implement such a thing in &lt;a href="http://love2d.org/"&gt;LÖVE&lt;/a&gt; as a challange. It uses a minmax approach to find
 worst possible piece.&lt;/p&gt;
-&lt;p&gt;&lt;a class="btn btn-default" href="https://github.com/mua/BlockingBad/releases/download/0.1/BlockingBad.exe"&gt;Download binary&lt;/a&gt;
+&lt;p&gt;&lt;a class="btn btn-default" href="https://github.com/mua/BlockingBad/releases/download/0.1/BlockingBad.zip"&gt;Download binary&lt;/a&gt;
 &lt;a class="btn btn-success" href="https://github.com/mua/BlockingBad"&gt;Get source&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/scrshot.png" /&gt;&lt;/p&gt;</summary><category term="2d"></category></entry></feed>
