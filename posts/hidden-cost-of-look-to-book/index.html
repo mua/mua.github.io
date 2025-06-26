@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>The Hidden Cost of Look to Book | Margins and Throughput</title>
+<meta name="keywords" content="">
+<meta name="description" content="Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?">
+<meta name="author" content="M. Utku Altinkaya">
+<link rel="canonical" href="/posts/hidden-cost-of-look-to-book/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.65c6102b96a2f43855b3b5347b7909dba711dec4cc692de8c21343c7b7913950.css" integrity="sha256-ZcYQK5ai9DhVs7U0e3kJ26cR3sTMaS3owhNDx7eROVA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/posts/hidden-cost-of-look-to-book/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    startup: {
+    ready() {
+      MathJax.startup.defaultReady();
+      MathJax.startup.document.inputJax[0].preFilters.add(({math}) => {
+        if (math.math.match(/\\\\/)) {
+          math.math = `\\displaylines{${math.math}}`;
+        }
+      });
+    }
+  },
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    },
+    loader:{
+      load: ['ui/safe']
+    },
+  };
+</script>
+<meta property="og:url" content="/posts/hidden-cost-of-look-to-book/">
+  <meta property="og:site_name" content="Margins and Throughput">
+  <meta property="og:title" content="The Hidden Cost of Look to Book">
+  <meta property="og:description" content="Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-12T21:01:10+03:00">
+    <meta property="article:modified_time" content="2025-06-12T21:01:10+03:00">
+    <meta property="og:image" content="/images/drain.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/images/drain.jpg">
+<meta name="twitter:title" content="The Hidden Cost of Look to Book">
+<meta name="twitter:description" content="Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/posts/"
+    },
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "The Hidden Cost of Look to Book",
+      "item": "/posts/hidden-cost-of-look-to-book/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Hidden Cost of Look to Book",
+  "name": "The Hidden Cost of Look to Book",
+  "description": "Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?",
+  "keywords": [
+    
+  ],
+  "articleBody": "If you’re paying per API call, every extra look costs you real dollars, but it goes way beyond that. Here is how you can calculate the actual cost of each look to optimize your traffic.\nUnderstanding Look to Book Ratio The Look to Book ratio measures how many search requests (looks) are needed to generate a single confirmed booking. The basic formula is:\n$$ \\text{Look to Book} = \\frac{\\text{Number of Searches}}{\\text{Number of Bookings}} $$\nFor example, if a travel platform submits 1,000 hotel searches and receives 50 bookings in return, the Look to Book ratio is:\n$$ \\frac{1,000}{50} = 20 $$\nThis means 20 “looks” are required to generate one booking.\nWhen 1 Search Becomes 150 Requests However, this simple ratio hides a significant portion of the actual cost incurred by suppliers and API providers. Here’s why:\n1. Search Requests Are Amplified Internally Most travel APIs allow a single search request to query hundreds of hotels at once. Therefore, the number of actual hotel lookups is much higher than the number of incoming search requests:\n$$ \\text{Effective Look to Book} = \\\\ \\frac{ \\text{Search Requests} \\times \\text{Avg. Hotels per Request} }{ \\text{Bookings} } $$\nIf each search request contains 50 hotels, and 1,000 search requests are made, that’s 50,000 hotel lookups—just for 50 bookings.\n2. Supplier Fan-Out Multiplies the Load Behind the scenes, many B2B travel platforms and wholesalers don’t own the hotel data—they aggregate it from multiple suppliers. Each hotel search may fan out to several supplier APIs. A more realistic metric of internal load becomes:\n$$ \\text{Adjusted Look to Book} = \\\\ \\frac{ \\text{Search} \\times \\text{Hotels} \\times \\text{Suppliers} }{ \\text{Bookings} } $$\nLet’s say each hotel query is routed to 3 suppliers:\n$$ \\frac{1,000 \\times 50 \\times 3}{50} = 3,000 $$\nThat’s 3,000 backend supplier requests per booking—a 150x increase from the original ratio.\nWhy This Matters Infrastructure Costs: Each additional supplier call increases server load, bandwidth usage, and cloud compute costs. Rate Limiting \u0026 Throttling: High look-to-book ratios can lead to suppliers throttling your access or charging higher fees. Opportunity Cost: Excessive looking can exhaust shared resources unfairly. Bad performing consumers can deplete your supplier’s quota therefore you cannot sell to better performing consumers. Rethinking the Metric Instead of just reporting a simple Look to Book ratio, travel companies should also track:\nFan-out factor (supplier load per search) Effective backend look volume Cost per successful booking, including compute and supplier overhead Conclusion\nThe Look to Book ratio has long been a trusted benchmark in travel commerce, but its true cost lies beneath the surface. By accounting for the amplification through hotel-level fan-out and supplier-level propagation, travel platforms can better manage infrastructure, negotiate smarter contracts, and design systems that reward efficient traffic—not just high volumes.\n",
+  "wordCount" : "457",
+  "inLanguage": "en",
+  "image":"/images/drain.jpg","datePublished": "2025-06-12T21:01:10+03:00",
+  "dateModified": "2025-06-12T21:01:10+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "M. Utku Altinkaya"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/posts/hidden-cost-of-look-to-book/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Margins and Throughput",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon.ico"
+    }
+  }
+}
+</script>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXK9ZJ4ET6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EXK9ZJ4ET6');
+</script>
+</head>
+
+<body class=" dark" id="
+  top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Margins and Throughput (Alt + H)">Margins and Throughput</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags/cto-journal/" title="Technology">
+                    <span>Technology</span>
+                </a>
+            </li>
+            <li>
+                <a href="/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      The Hidden Cost of Look to Book
+    </h1>
+    <div class="post-description">
+      Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?
+    </div>
+    <div class="post-meta"><span title='2025-06-12 21:01:10 +0300 +03'>June 12, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;M. Utku Altinkaya
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="/images/drain.jpg" alt="Travel image">
+        
+</figure>
+  <div class="post-content"><p>If you’re paying per API call, every extra look costs you real dollars, but it goes way beyond that. Here is how you can calculate the actual cost of each look to optimize your traffic.</p>
+<h2 id="understanding-look-to-book-ratio">Understanding Look to Book Ratio<a hidden class="anchor" aria-hidden="true" href="#understanding-look-to-book-ratio">#</a></h2>
+<p>The <strong>Look to Book ratio</strong> measures how many search requests (looks) are needed to generate a single confirmed booking. The basic formula is:</p>
+<p>$$
+\text{Look to Book} = \frac{\text{Number of Searches}}{\text{Number of Bookings}}
+$$</p>
+<p>For example, if a travel platform submits 1,000 hotel searches and receives 50 bookings in return, the Look to Book ratio is:</p>
+<p>$$
+\frac{1,000}{50} = 20
+$$</p>
+<p>This means 20 &ldquo;looks&rdquo; are required to generate one booking.</p>
+<h2 id="when-1-search-becomes-150-requests">When 1 Search Becomes 150 Requests<a hidden class="anchor" aria-hidden="true" href="#when-1-search-becomes-150-requests">#</a></h2>
+<p>However, this simple ratio hides a significant portion of the actual cost incurred by suppliers and API providers. Here’s why:</p>
+<h3 id="1-search-requests-are-amplified-internally">1. <strong>Search Requests Are Amplified Internally</strong><a hidden class="anchor" aria-hidden="true" href="#1-search-requests-are-amplified-internally">#</a></h3>
+<p>Most travel APIs allow a single search request to query hundreds of hotels at once. Therefore, the number of actual hotel lookups is much higher than the number of incoming search requests:</p>
+<p>$$
+\text{Effective Look to Book} = \\ \frac{
+\text{Search Requests} \times \text{Avg. Hotels per Request}
+}{
+\text{Bookings}
+}
+$$</p>
+<p>If each search request contains 50 hotels, and 1,000 search requests are made, that’s 50,000 hotel lookups—just for 50 bookings.</p>
+<h3 id="2-supplier-fan-out-multiplies-the-load">2. <strong>Supplier Fan-Out Multiplies the Load</strong><a hidden class="anchor" aria-hidden="true" href="#2-supplier-fan-out-multiplies-the-load">#</a></h3>
+
+
+
+
+
+
+<div style="width: 100%;height: 450px;margin: 0 auto;">
+    <canvas id="4ff415cf8a88cccddea2dccbc5deb644" style="width: 100%; height: 100%;"></canvas>    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
+<script type="text/javascript">
+    var ctx = document.getElementById('4ff415cf8a88cccddea2dccbc5deb644').getContext('2d');
+    var options = 
+{
+    "type": "line",
+    "data": {
+        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "datasets": [
+            {
+                "label": "Search (RPM)",
+                "borderColor": "#3366cc",
+                "borderWidth": 2,
+                "data": [1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100],
+                "fill": false,
+                "pointRadius": 4,
+                "yAxisID": "y-searches"
+            },
+            {
+                "label": "Hotel Count",
+                "borderColor": "#109618",
+                "borderWidth": 2,
+                "data": [300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500, 520],
+                "fill": false,
+                "pointRadius": 4,
+                "yAxisID": "y-hotels"
+            },
+            {
+                "label": "Supplier Count",
+                "borderColor": "#ff9900",
+                "borderWidth": 2,
+                "data": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                "fill": false,
+                "pointRadius": 4,
+                "yAxisID": "y-suppliers"
+            },
+            {
+                "label": "Outgoing Searches",
+                "borderColor": "#dc3912",
+                "borderWidth": 2,
+                "data": [1500, 2112, 2856, 3744, 4788, 6000, 7392, 8976, 10764, 12768, 15000, 17472],
+                "fill": false,
+                "pointRadius": 4,
+                "yAxisID": "y-outgoing"
+            }
+        ]
+    },
+    "options": {
+        "responsive": true,
+        "title": {
+            "display": true,
+            "text": "The Multiplication Effect of Fan-out Architecture",
+            "fontSize": 16
+        },
+        "tooltips": {
+            "mode": "index",
+            "intersect": false
+        },
+        "legend": {
+            "position": "bottom"
+        },
+        "scales": {
+            "xAxes": [{
+                "gridLines": {
+                    "display": true
+                }
+            }],
+            "yAxes": [
+                {
+                    "id": "y-searches",
+                    "position": "left",
+                    "scaleLabel": {
+                        "display": true,
+                        "labelString": "Search RPM"
+                    },
+                    "ticks": {
+                        "beginAtZero": true,
+                        "callback": function(value) {
+                            return value.toLocaleString();
+                        }
+                    },
+                    "gridLines": {
+                        "display": false
+                    }
+                },
+                {
+                    "id": "y-hotels",
+                    "position": "left",
+                    "scaleLabel": {
+                        "display": true,
+                        "labelString": "Hotel Count"
+                    },
+                    "ticks": {
+                        "beginAtZero": true
+                    },
+                    "gridLines": {
+                        "display": false
+                    }
+                },
+                {
+                    "id": "y-suppliers",
+                    "display": false,
+                    "position": "right",
+                    "ticks": {
+                        "beginAtZero": true
+                    }
+                },
+                {
+                    "id": "y-outgoing",
+                    "position": "right",
+                    "scaleLabel": {
+                        "display": true,
+                        "labelString": "Outgoing Searches"
+                    },
+                    "ticks": {
+                        "beginAtZero": true,
+                        "callback": function(value) {
+                            return value.toLocaleString();
+                        }
+                    }
+                }
+            ]
+        }
+    }
+};
+    new Chart(ctx, options);
+</script>
+
+<p>Behind the scenes, many B2B travel platforms and wholesalers don&rsquo;t own the hotel data—they aggregate it from multiple suppliers. Each hotel search may fan out to several supplier APIs. A more realistic metric of internal load becomes:</p>
+<p>$$
+\text{Adjusted Look to Book} = \\ \frac{
+\text{Search} \times \text{Hotels} \times \text{Suppliers}
+}{
+\text{Bookings}
+}
+$$</p>
+<p>Let’s say each hotel query is routed to 3 suppliers:</p>
+<p>$$
+\frac{1,000 \times 50 \times 3}{50} = 3,000
+$$</p>
+<p>That’s 3,000 backend supplier requests per booking—a 150x increase from the original ratio.</p>
+<hr>
+<h2 id="why-this-matters">Why This Matters<a hidden class="anchor" aria-hidden="true" href="#why-this-matters">#</a></h2>
+<ul>
+<li><strong>Infrastructure Costs</strong>: Each additional supplier call increases server load, bandwidth usage, and cloud compute costs.</li>
+<li><strong>Rate Limiting &amp; Throttling</strong>: High look-to-book ratios can lead to suppliers throttling your access or charging higher fees.</li>
+<li><strong>Opportunity Cost</strong>: Excessive looking can exhaust shared resources unfairly. Bad performing consumers can deplete your supplier&rsquo;s quota therefore you cannot sell to better performing consumers.</li>
+</ul>
+<h2 id="rethinking-the-metric">Rethinking the Metric<a hidden class="anchor" aria-hidden="true" href="#rethinking-the-metric">#</a></h2>
+<p>Instead of just reporting a simple Look to Book ratio, travel companies should also track:</p>
+<ul>
+<li><strong>Fan-out factor</strong> (supplier load per search)</li>
+<li><strong>Effective backend look volume</strong></li>
+<li><strong>Cost per successful booking</strong>, including compute and supplier overhead</li>
+</ul>
+<hr>
+<p><strong>Conclusion</strong></p>
+<p>The Look to Book ratio has long been a trusted benchmark in travel commerce, but its true cost lies beneath the surface. By accounting for the amplification through hotel-level fan-out and supplier-level propagation, travel platforms can better manage infrastructure, negotiate smarter contracts, and design systems that reward efficient traffic—not just high volumes.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="/posts/yolcu-stack/">
+    <span class="title">Next »</span>
+    <br>
+    <span>CTO Journal #2: Transforming a Car Rental Stack at Yolcu360</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on x"
+            href="https://x.com/intent/tweet/?text=The%20Hidden%20Cost%20of%20Look%20to%20Book&amp;url=%2fposts%2fhidden-cost-of-look-to-book%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fposts%2fhidden-cost-of-look-to-book%2f&amp;title=The%20Hidden%20Cost%20of%20Look%20to%20Book&amp;summary=The%20Hidden%20Cost%20of%20Look%20to%20Book&amp;source=%2fposts%2fhidden-cost-of-look-to-book%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on reddit"
+            href="https://reddit.com/submit?url=%2fposts%2fhidden-cost-of-look-to-book%2f&title=The%20Hidden%20Cost%20of%20Look%20to%20Book">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=%2fposts%2fhidden-cost-of-look-to-book%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on whatsapp"
+            href="https://api.whatsapp.com/send?text=The%20Hidden%20Cost%20of%20Look%20to%20Book%20-%20%2fposts%2fhidden-cost-of-look-to-book%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on telegram"
+            href="https://telegram.me/share/url?text=The%20Hidden%20Cost%20of%20Look%20to%20Book&amp;url=%2fposts%2fhidden-cost-of-look-to-book%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share The Hidden Cost of Look to Book on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=The%20Hidden%20Cost%20of%20Look%20to%20Book&u=%2fposts%2fhidden-cost-of-look-to-book%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+  </main>
+  
+<footer class="footer">
+        <span>&copy; 2025 <a href="/">Margins and Throughput</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+
+
+</html>

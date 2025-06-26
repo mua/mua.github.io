@@ -1,0 +1,132 @@
+Service description,Service ID,SKU description,SKU ID,Usage amount,Usage unit,Cost (₺),Discounts (₺),Promotions & others (₺),Unrounded subtotal (₺),Subtotal (₺),Percent change in subtotal compared to previous period
+Artifact Registry,149C-F9EC-3994,Artifact Registry Storage,8502-299A-ABAF,0.128,gibibyte month,0.50,0.00,-0.50,0.000000,0.00,0%
+Artifact Registry,149C-F9EC-3994,Artifact Registry Network Internet Egress Europe to Europe,B202-CE74-F2F2,0.034,gibibyte,0.14,0.00,-0.14,0.000000,0.00,0%
+Artifact Registry,149C-F9EC-3994,Artifact Registry Network Inter Region Egress Europe to Europe,EC12-0EE6-29FB,0.48,gibibyte,0.38,0.00,-0.38,0.000000,0.00,0%
+Cloud Run,152E-C115-5142,Services CPU Tier 2  (Request-based billing),085C-A237-027A,9.4,second,0.01,-0.01,0.00,0.000000,0.00,0%
+Cloud Run,152E-C115-5142,Requests,2DA5-55D3-E679,1,count,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud Run,152E-C115-5142,Services Memory Tier 2 (Request-based billing),600C-3782-6708,2.7,gibibyte second,0.00,-0.00,0.00,0.000000,0.00,0%
+Cloud Run,152E-C115-5142,Cloud Run Network HTTP Load Balancing Data Transfer Out to Load Balancer,9841-EABE-71F3,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud Logging,5490-F7B7-8DF6,Log Storage cost,143F-A1B0-E0BE,4.671,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Frankfurt to Americas,00F1-65AD-DC47,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to EMEA,06DC-321F-CF05,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to Americas,0E03-E9ED-BB81,0.004,gibibyte,0.02,0.00,-0.02,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Americas to Frankfurt,0F4C-2B02-F59B,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Intra Zone Data Transfer Out,14F9-7705-2FD4,66.643,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to South America,1D5E-A0BA-AE6D,0.001,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Middle East to Zurich,1E99-1B07-3974,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Frankfurt to EMEA,290E-20E5-93E2,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Americas,2ECA-4650-2876,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from South America to Zurich,30C8-618D-0897,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from APAC to Zurich,3A6B-5D49-5723,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Container-Optimized OS - PCID Whitelisted (RAM cost),3D41-4308-45C0,463.227,gibibyte hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Data Transfer to Google Services from Zurich to Zurich,3E61-F613-86A2,3.394,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Finland to Frankfurt,4155-5133-29A9,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Frankfurt,4D07-9DD7-7783,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to Middle East,4F85-CC6A-876F,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Data Transfer to Google Services from Frankfurt to Frankfurt,50B6-FB7D-9C7E,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Americas to Zurich,52CC-BB3E-DF1F,0.001,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from EMEA to Zurich,543F-6E0D-EBC1,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Los Angeles to Zurich,5A92-5B62-0D15,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to Africa,5D12-329A-8F20,0.001,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Google Container Engine Node (RAM cost),5DEA-D962-E5F8,463.227,gibibyte hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Finland to Zurich,6391-B9D8-59C4,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Australia to Zurich,63C0-717B-8A51,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Static Ip Charge,66A2-68EA-56BE,0.239,hour,0.09,0.00,-0.09,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Google Container Engine Node (CPU cost),6934-30E8-A65F,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Japan to Zurich,6AC2-0D4B-A220,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network HTTP Load Balancing Data Transfer Out to Load Balancer,6C67-1253-BB04,0.228,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to Australia,6DA7-3087-3552,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from EMEA to Frankfurt,6FE8-4D98-D65C,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from EMEA to Frankfurt,7164-19AF-C025,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network HTTP Load Balancing Data Transfer In from Load Balancer,761A-BA86-D467,0.084,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Sao Paulo,7814-2BFF-870A,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Container-Optimized OS - PCID Whitelisted (CPU cost),7927-E3EC-DBBC,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Zurich to Frankfurt,7A9E-FBC7-DF08,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Frankfurt to Apac(Excluding Korea and Indonesia),7C0C-B50B-5E27,0.001,gibibyte,0.01,0.00,-0.01,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Apac(Excluding Korea and Indonesia) to Zurich,7C49-5439-8A99,0.006,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Sao Paulo to Zurich,7E70-B597-C2CB,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Sydney to Zurich,7EC2-2C6B-024E,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Frankfurt to Finland,80F1-CB6A-6F4E,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Data Transfer In from Google Services from Frankfurt to Frankfurt,85A7-C412-8905,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Shielded COS (CPU cost),8835-C41E-B3EA,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Salt Lake City,889B-ACCB-5F43,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from London to Zurich,8BB4-E67A-5715,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Data Transfer In from Google Services from Zurich to Zurich,8EE1-7AF9-DC7F,0.816,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Americas to Frankfurt,905E-26BE-5CD4,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to London,94EA-FAB7-ADE3,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Africa to Zurich,966F-1757-CF5B,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Apac(Excluding Korea and Indonesia) to Frankfurt,96B3-94E6-7D9E,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Intra Zone Data Transfer In,9C76-A3FB-C60A,71.255,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,E2 Instance Ram running in Zurich,9C82-E173-62D8,472.277,gibibyte hour,75.49,0.00,-75.49,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Virginia to Zurich,A23F-6118-661F,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Frankfurt to Americas,A612-B589-059A,0.003,gibibyte,0.01,0.00,-0.01,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Shielded COS (CPU cost),ABD6-FF7B-A404,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Shielded COS (RAM cost),B0B5-6E19-13AE,463.227,gibibyte hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Singapore to Zurich,B12F-269D-3FE4,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Frankfurt to Zurich,BE65-62E6-8BFA,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Doha to Zurich,BE8B-CCC8-73F5,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,External IP Charge on a Standard VM,C054-7F72-A02E,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Mumbai to Zurich,C14F-6170-8C2A,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Google Container Engine Node (CPU cost),C268-6D50-D598,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Columbus,C393-A74E-0930,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Salt Lake City to Zurich,C4A1-1ECB-C301,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from Americas to Zurich,C6ED-27C1-84FF,0.004,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Finland,C80F-1F4D-452A,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Virginia,C9E5-2D80-EFC6,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Columbus to Zurich,CA24-63B4-811A,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Balanced PD Capacity in Zurich,CAF4-ADE9-58BA,6.219,gibibyte month,31.59,0.00,-31.59,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Data Transfer In via Carrier Peering Network - EMEA Based,CCB8-0A9C-50FA,0.155,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,E2 Instance Core running in Zurich,CCEF-2733-ADEB,118.069,hour,140.81,0.00,-140.81,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Frankfurt to APAC,CFAF-21DE-E2D9,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Zone Data Transfer In,D0CC-50DF-59D2,30.949,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Netherlands to Zurich,D61E-D91E-65DA,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Container-Optimized OS - PCID Whitelisted (CPU cost),DA21-2385-9025,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Frankfurt to Zurich,DC02-3250-E7AA,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Zone Data Transfer Out,DE9E-AFBC-A15A,0.158,gibibyte,0.06,0.00,-0.06,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to EMEA,E0D2-115E-6B2A,0.153,gibibyte,0.72,0.00,-0.72,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Frankfurt to EMEA,E7A9-CA47-A3E3,0.007,gibibyte,0.03,0.00,-0.03,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Container-Optimized OS from Google (CPU cost),ECCC-9EE4-AEE4,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Warsaw to Zurich,EF62-BEF7-77C1,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Container-Optimized OS from Google (RAM cost),F239-15CB-5B98,463.227,gibibyte hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from APAC to Frankfurt,F392-D386-B0FE,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Data Transfer Out via Carrier Peering Network - EMEA Based,F603-6008-38E5,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer Out from Zurich to Los Angeles,F86C-818F-9CD7,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer In from EMEA to Zurich,F901-974D-8C85,0.425,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Licensing Fee for Container-Optimized OS from Google (CPU cost),FA27-F4A0-3EE3,115.807,hour,0.00,0.00,0.00,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Internet Data Transfer Out from Zurich to Apac(Excluding Korea and Indonesia),FD29-618F-20CC,0.007,gibibyte,0.03,0.00,-0.03,0.000000,0.00,0%
+Compute Engine,6F81-5844-456A,Network Inter Region Data Transfer In from Delhi to Zurich,FE89-BC98-2131,0,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Certificate Manager,7766-403C-6D6E,Certificates usage,F08F-F1CD-3492,0.054,month,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud Storage,95FF-2EF5-5EA1,Standard Storage US Multi-region,0D5D-6E23-4250,0,gibibyte month,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud Storage,95FF-2EF5-5EA1,Regional Standard Class B Operations,7870-010B-2763,70,count,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud Storage,95FF-2EF5-5EA1,Standard Storage Frankfurt,F272-7933-F065,0.005,gibibyte month,0.00,0.00,-0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Inter Zone Data Transfer Out in Zurich,17B9-DD83-4A23,30.964,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Cloud SQL for PostgreSQL: Zonal - Small instance in Zurich,2BB1-3648-EC12,38,hour,67.56,0.00,-67.56,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Internet Data Transfer Out from Zurich to EMEA,3C87-B36D-37E7,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Cloud SQL for PostgreSQL: Zonal - Standard storage in Zurich,4232-CC4A-1C17,0.528,gibibyte month,4.56,0.00,-4.56,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Internet Data Transfer Out from Zurich to APAC,6DD9-AB7C-D62D,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Inter Connect Data Transfer Out EMEA,7175-B1A3-8454,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Cloud SQL: Backups in Zurich,911B-2408-0554,0.007,gibibyte month,0.03,0.00,-0.03,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Data Transfer to Google Services from Zurich to Zurich,97B4-4724-6583,0.047,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Inter Region Data Transfer Out from Zurich to Americas,A1ED-4947-78D5,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Internet Data Transfer Out from Zurich to Americas,C855-8D50-CCC5,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Cloud SQL,9662-B51E-5089,Network Inter Region Data Transfer Out from Zurich to Finland,D2A6-3115-4BE2,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Kubernetes Engine,CCD8-9BF1-090E,Zonal Kubernetes Clusters,6B92-A835-08AB,38.602,hour,150.84,-150.84,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Network Private Service Connect Google Managed Service GKE Consumer Data Processing Primary,11AD-2790-7C4B,6.739,gibibyte,0.00,0.00,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Cloud Load Balancer Forwarding Rule Additional Global,1211-928B-AF92,36.63,hour,14.31,0.00,-14.31,0.000000,0.00,0%
+Networking,E505-1604-58F8,Networking Cloud Armor Requests,1A87-DEB9-C4BE,1,count,0.00,0.00,-0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Global External Application Load Balancer Outbound Data Processing for Zurich (europe-west6),1D71-8CF2-1494,0.138,gibibyte,0.06,0.00,-0.06,0.000000,0.00,0%
+Networking,E505-1604-58F8,Networking Cloud Armor Policy,4B13-E64F-4A2B,0.375,month,73.33,0.00,-73.33,0.000000,0.00,0%
+Networking,E505-1604-58F8,Networking Service Directory Integrated Resource,50F4-D7E5-3682,0.227,month,0.00,0.00,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Global External Application Load Balancer Inbound Data Processing for Zurich (europe-west6),5275-C7DF-707B,0.016,gibibyte,0.01,0.00,-0.01,0.000000,0.00,0%
+Networking,E505-1604-58F8,Global External Application Load Balancer Outbound Data Processing for Frankfurt (europe-west3),60B5-0FFC-DFA0,0.015,gibibyte,0.01,0.00,-0.01,0.000000,0.00,0%
+Networking,E505-1604-58F8,Networking Private Service Connect Partner Select End Point,6882-BFB0-B7E5,38.602,hour,15.08,-15.08,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Network Intelligence Center Network Analyzer Resource Hours,9BF8-CD36-F9B8,123,count,5.29,-5.29,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Networking Cloud Armor Rule,A321-89BD-F5BC,0.751,month,29.33,0.00,-29.33,0.000000,0.00,0%
+Networking,E505-1604-58F8,Global External Application Load Balancer Inbound Data Processing for Frankfurt (europe-west3),A7C2-BF54-1B4B,0,gibibyte,0.00,0.00,-0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Network Intelligence Center Internet to Google Cloud Performance Resource Hours,BDBA-22FA-3925,123,count,3.85,-3.85,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Network Intelligence Center Topology and Google Cloud Performance Resource Hours,D9AD-28F8-05D8,123,count,5.29,-5.29,0.00,0.000000,0.00,0%
+Networking,E505-1604-58F8,Cloud Load Balancer Forwarding Rule Minimum Global,DEE3-C42E-3E4D,39.356,hour,38.45,0.00,-38.45,0.000000,0.00,0%
+Secret Manager,EE82-7A5E-871C,Secret version replica storage,7756-ADEF-84F4,0.054,month,0.00,0.00,0.00,0.000000,0.00,0%
+,,,,,,,,Subtotal,0.000000,0.00
+,,,,,,,,Tax,0.000000,0.00
+,,,,,,,,Total,0.000000,0.00
