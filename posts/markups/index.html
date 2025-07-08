@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>7 Data‑Driven Tactics to Boost Profit with Precision Markups | My New Hugo Site</title>
+<meta name="keywords" content="markup, pricing, travel-tech, revenue-management">
+<meta name="description" content="Learn how travel businesses can enhance profitability by moving from blanket markups to precise, data‑driven pricing strategies.">
+<meta name="author" content="">
+<link rel="canonical" href="/posts/markups/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.65c6102b96a2f43855b3b5347b7909dba711dec4cc692de8c21343c7b7913950.css" integrity="sha256-ZcYQK5ai9DhVs7U0e3kJ26cR3sTMaS3owhNDx7eROVA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/posts/markups/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<style>
+    /*
+This is just a placeholder blank stylesheet so as to support adding custom styles budled with theme's default styles
+
+Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
+*/
+
+/* Markup Calculator Styles */
+#calc {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border: 2px solid #404040;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 24px auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  #calc {
+    padding: 20px;
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 768px) {
+  #calc {
+    padding: 24px;
+    max-width: 480px;
+  }
+}
+
+[data-theme="light"] #calc {
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  border-color: #dee2e6;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+#calc label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: #e0e0e0;
+  letter-spacing: 0.5px;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 44px;
+}
+
+@media (min-width: 480px) {
+  #calc label {
+    font-size: 14px;
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+    gap: 16px;
+    min-height: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  #calc label {
+    font-size: 14px;
+    margin-bottom: 0;
+    min-height: 52px;
+  }
+}
+
+[data-theme="light"] #calc label {
+  color: #495057;
+}
+
+#calc input {
+  width: 105px;
+  padding: 10px 16px;
+  border: 1px solid #505050;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  text-align: right;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  min-width: 0;
+  flex-shrink: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+#calc input::-webkit-outer-spin-button,
+#calc input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#calc input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media (min-width: 480px) {
+  #calc input {
+    width: 130px;
+    padding: 11px 18px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  #calc input {
+    width: 140px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+[data-theme="light"] #calc input {
+  background: #fff;
+  border-color: #ced4da;
+  color: #495057;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#calc input:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+#calc button {
+  background: linear-gradient(145deg, #007acc, #005a9e);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  margin: 16px 0 12px 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 122, 204, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
+  touch-action: manipulation;
+}
+
+@media (min-width: 480px) {
+  #calc button {
+    padding: 13px 28px;
+    font-size: 15px;
+    margin: 18px 0 14px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #calc button {
+    padding: 14px 32px;
+    font-size: 16px;
+    margin: 20px 0 16px 0;
+  }
+  #calc input {
+    width: 120px;
+  }
+}
+
+#calc button:hover {
+  background: linear-gradient(145deg, #0086e6, #006bb3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+}
+
+#calc button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 122, 204, 0.3);
+}
+
+#calc #output {
+  background: #1a1a1a;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #00ff88;
+  white-space: pre-wrap;
+  min-height: 100px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+}
+
+@media (min-width: 480px) {
+  #calc #output {
+    padding: 14px;
+    margin-top: 14px;
+    font-size: 12px;
+    min-height: 110px;
+    line-height: 1.45;
+  }
+}
+
+@media (min-width: 768px) {
+  #calc #output {
+    padding: 16px;
+    margin-top: 16px;
+    font-size: 13px;
+    min-height: 120px;
+    line-height: 1.5;
+  }
+}
+
+[data-theme="light"] #calc #output {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+  color: #198754;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#calc #output:empty::before {
+  content: "Results will appear here...";
+  color: #666;
+  font-style: italic;
+}
+
+[data-theme="light"] #calc #output:empty::before {
+  color: #6c757d;
+}
+
+</style>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<meta property="og:url" content="/posts/markups/">
+  <meta property="og:site_name" content="Margins and Throughput">
+  <meta property="og:title" content="7 Data‑Driven Tactics to Boost Profit with Precision Markups">
+  <meta property="og:description" content="Stop leaving margin on the table. Explore seven data‑driven markup tactics—then crunch your own numbers with the built‑in profit calculator.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-06T00:00:00+00:00">
+    <meta property="og:image" content="/images/pmarkup.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/images/pmarkup.png">
+<meta name="twitter:title" content="7 Data‑Driven Tactics to Boost Profit with Precision Markups">
+<meta name="twitter:description" content="Stop leaving margin on the table. Explore seven data‑driven markup tactics—then crunch your own numbers with the built‑in profit calculator.">
+
+</script>
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXK9ZJ4ET6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EXK9ZJ4ET6');
+</script>
+</head>
+
+<body class=" dark" id="
+  top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      7 Data‑Driven Tactics to Boost Profit with Precision Markups
+    </h1>
+    <div class="post-description">
+        Stop leaving margin on the table. Explore seven data‑driven markup tactics—then crunch your own numbers with the built‑in profit calculator.
+    </div>
+    <div class="post-meta"><span title='2025-07-06 00:00:00 +0000 UTC'>July 6, 2025</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="/images/pmarkup.png" alt="Illustration of hotel price tags connected by data lines">
+        
+</figure>
+  <div class="post-content"><p>Whether you manage pricing for a boutique hotel <strong>or</strong> run an OTA handling millions of daily searches, <strong>markups often feel like a constant struggle.</strong> Most teams rely on familiar routines, thinking, “+6 % worked last year, so let&rsquo;s stick with it.”</p>
+<blockquote>
+<p><strong>Real-world scenario:</strong> At sunrise on <strong>12 December</strong>, a mid-sized bedbank faced an alarming scenario—<strong>110 million</strong> hotel searches overnight, but profit per booking plummeted below <strong>1 %</strong> and their API expenses surged by <strong>€12,000</strong> within hours. After six weeks of targeted markup optimization, the same traffic yielded a <strong>28 %</strong> increase in contribution margin without sacrificing significant number of bookings.</p></blockquote>
+
+
+
+
+
+
+<div style="width: 90%;height: 200px;margin: 0 auto">
+    <canvas id="a88fdc5fba4dcc4ce6db2814fe4cdcc5"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
+<script type="text/javascript">
+    var ctx = document.getElementById('a88fdc5fba4dcc4ce6db2814fe4cdcc5').getContext('2d');
+    var options = 
+{
+"type": "bar",
+"data": {
+"labels": ["Flat 6%", "Precision 6.7%"],
+"datasets": [
+{
+"label": "Conversion Rate (%)",
+"data": [2.0, 1.95],
+"backgroundColor": "#36a2eb",
+"yAxisID": "percentage"
+},
+{
+"label": "Avg. Markup Applied (%)",
+"data": [6.0, 6.7],
+"backgroundColor": "#ffcd56",
+"yAxisID": "percentage"
+},
+{
+"label": "Monthly Margin (€000s)",
+"data": [80, 102.4],
+"backgroundColor": "#4bc0c0",
+"yAxisID": "monetary"
+}
+]
+},
+"options": {
+"maintainAspectRatio": false,
+"scales": {
+"yAxes": [
+{
+"id": "percentage",
+"type": "linear",
+"position": "left",
+"ticks": {
+"beginAtZero": true,
+"max": 8
+},
+"scaleLabel": {
+"display": true,
+"labelString": "Percentage (%)"
+}
+},
+{
+"id": "monetary",
+"type": "linear",
+"position": "right",
+"ticks": {
+"beginAtZero": true,
+"max": 120
+},
+"scaleLabel": {
+"display": true,
+"labelString": "Monthly Margin (€000s)"
+},
+"gridLines": {
+"drawOnChartArea": false
+}
+}
+]
+},
+"title": {
+"display": true,
+"text": "Impact of Precision Markups: Modest Bump, Major Margin Gain"
+},
+"legend": {
+"position": "bottom"
+},
+"tooltips": {
+"mode": "index",
+"intersect": false
+}
+}
+};
+    new Chart(ctx, options);
+</script>
+
+<hr>
+<h2 id="seven-effective-strategies-for-turning-a-flat-6-into-precise-data-driven-pricing">Seven effective strategies for turning a flat <strong>+6 %</strong> into precise, data-driven pricing<a hidden class="anchor" aria-hidden="true" href="#seven-effective-strategies-for-turning-a-flat-6-into-precise-data-driven-pricing">#</a></h2>
+<p><strong>1 | Centralize your data</strong>
+Combine search logs, booking histories, and channel costs into one analytics hub. Unified data helps finance and product teams swiftly resolve pricing debates.</p>
+<p><strong>2 | Create transparent, user-friendly rules</strong>
+“Apply +2 % for non-refundable bookings, +3 % in high-risk markets.” A user-friendly rule editor empowers revenue teams to implement changes instantly, no coding needed.</p>
+<p><strong>3 | Harness predictive analytics</strong>
+A simple ML model predicts booking likelihood. Increase markups for high-intent shoppers, reduce for price-sensitive ones—typically boosting margins by <strong>3–5 percentage points</strong>.</p>
+<p><strong>4 | Evaluate distribution channels rigorously</strong>
+Distinguish partners who generate valuable, converting traffic from those sending low-quality searches. Adjust markups accordingly to incentivize better channel performance.</p>
+<p><strong>5 | Experiment systematically</strong>
+Implement built-in A/B or <strong>multi-armed-bandit</strong> testing, automatically routing traffic toward the highest-performing pricing strategies, delivering insights quickly.</p>
+<p><strong>6 | Optimize edge pricing</strong>
+Cache calculated prices within your edge servers (closest to the end-user). Deliver exceptionally fast response times (&lt; 50 ms) while sophisticated rules operate seamlessly in the background.</p>
+<p><strong>7 | Provide transparency</strong>
+Track each pricing decision—rules triggered, risk scores used—and visualize them in real-time dashboards. Clear data builds trust with finance and helps technical teams spot issues proactively.</p>
+<hr>
+<h2 id="key-takeaway">Key takeaway<a hidden class="anchor" aria-hidden="true" href="#key-takeaway">#</a></h2>
+<p>Effective markup strategies aren&rsquo;t about overcharging travelers—they’re about precisely aligning pricing with market dynamics, risk, and customer intent. Start with straightforward rules, integrate unified data, and add predictive insights. For the fastest implementation, leverage <strong>LodgingBase’s API and intuitive rule builder</strong>—a single solution addressing all seven tactics. Explore <strong>markup impact calculator</strong> below to quantify how small changes can significantly improve your margins.</p>
+<hr>
+<h2 id="markup-impact-calculator">Markup Impact Calculator<a hidden class="anchor" aria-hidden="true" href="#markup-impact-calculator">#</a></h2>
+
+<div id="calc" style="max-width: 400px; font-size: 14px;">
+    <div style="margin-bottom: 12px;">
+    <label>Monthly searches <input id="S" type="number" value="20000000"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">Total searches per month</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Look-to-book (L2B) <input id="L" type="number" value="50000"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">Searches per booking</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Avg. booking value (€) <input id="B" type="number" value="300"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">Gross value before markup</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Baseline markup (%) <input id="m0" type="number" step="0.1" value="6"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">Current markup %</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Test markup (%) <input id="m1" type="number" step="0.1" value="7"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">New markup % to test</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Search cost € / 1 000 <input id="ks" type="number" step="0.1" value="2"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">API cost per 1k searches</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Cost per booking (€) <input id="kb" type="number" step="0.1" value="1"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">Fixed cost per booking</small>
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+    <label>Δ looks per +1 pp (%) <input id="elasL" type="number" step="0.1" value="1000"></label>
+    <small style="font-size: 11px; color: #666; display: block; margin-top: 2px;">Added looks per booking per +1pp markup</small>
+    </div>
+    
+    <button id="run" style="margin-top: 15px; padding: 10px 20px;">Calculate</button>
+    <pre id="output" style="font-size: 12px; margin-top: 10px;"></pre>
+    </div>    
+<script src="/assets/js/markup-calculator.js"></script>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/markup/">Markup</a></li>
+      <li><a href="/tags/pricing/">Pricing</a></li>
+      <li><a href="/tags/travel-tech/">Travel-Tech</a></li>
+      <li><a href="/tags/revenue-management/">Revenue-Management</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="/">My New Hugo Site</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
