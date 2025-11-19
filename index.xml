@@ -1,1 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Margins and Throughput</title><link>/</link><description>Recent content on Margins and Throughput</description><generator>Hugo -- 0.147.8</generator><language>en</language><lastBuildDate>Thu, 12 Jun 2025 21:01:10 +0300</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>The Hidden Cost of Look to Book</title><link>/posts/hidden-cost-of-look-to-book/</link><pubDate>Thu, 12 Jun 2025 21:01:10 +0300</pubDate><guid>/posts/hidden-cost-of-look-to-book/</guid><description>Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?</description></item><item><title>CTO Journal #2: Transforming a Car Rental Stack at Yolcu360</title><link>/posts/yolcu-stack/</link><pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate><guid>/posts/yolcu-stack/</guid><description>The journey from monolith to microservices, integrating GIS logic, and launching a GPT-4 powered chatbot.</description></item><item><title>Why We Moved to Microservices at Yolcu360</title><link>/posts/car-rental/</link><pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate><guid>/posts/car-rental/</guid><description>Lessons from transforming a monolithic car rental booking engine into a scalable microservices platform.</description></item><item><title>Serving 450,000 requests per minute in HotelsPro</title><link>/posts/metglobal/</link><pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate><guid>/posts/metglobal/</guid><description>How we built a travel search engine that served 450,000 requests per minute under 300ms, and what I’d do differently today.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Margins and Throughput</title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on Margins and Throughput</description>
+    <generator>Hugo -- 0.147.8</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Nov 2025 03:46:55 +0300</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Who is Paying For Other People&#39;s AI?</title>
+      <link>//localhost:1313/posts/ai-cost/</link>
+      <pubDate>Wed, 19 Nov 2025 03:46:55 +0300</pubDate>
+      <guid>//localhost:1313/posts/ai-cost/</guid>
+      <description>AI is not replacing the software — it is replacing the user. And someone is footing the backend bill.</description>
+    </item>
+    <item>
+      <title>The Hidden Cost of Look to Book</title>
+      <link>//localhost:1313/posts/hidden-cost-of-look-to-book/</link>
+      <pubDate>Thu, 12 Jun 2025 21:01:10 +0300</pubDate>
+      <guid>//localhost:1313/posts/hidden-cost-of-look-to-book/</guid>
+      <description>Look-to-book ratio is a familiar metric in travel, but what does it really cost to look?</description>
+    </item>
+    <item>
+      <title>CTO Journal #2: Transforming a Car Rental Stack at Yolcu360</title>
+      <link>//localhost:1313/posts/yolcu-stack/</link>
+      <pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate>
+      <guid>//localhost:1313/posts/yolcu-stack/</guid>
+      <description>The journey from monolith to microservices, integrating GIS logic, and launching a GPT-4 powered chatbot.</description>
+    </item>
+    <item>
+      <title>Why We Moved to Microservices at Yolcu360</title>
+      <link>//localhost:1313/posts/car-rental/</link>
+      <pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate>
+      <guid>//localhost:1313/posts/car-rental/</guid>
+      <description>Lessons from transforming a monolithic car rental booking engine into a scalable microservices platform.</description>
+    </item>
+    <item>
+      <title>Serving 450,000 requests per minute in HotelsPro</title>
+      <link>//localhost:1313/posts/metglobal/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/metglobal/</guid>
+      <description>How we built a travel search engine that served 450,000 requests per minute under 300ms, and what I’d do differently today.</description>
+    </item>
+  </channel>
+</rss>

@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Serving 450,000 requests per minute in HotelsPro | Margins and Throughput</title>
-<meta name="keywords" content="cto-journal, travel-tech, scalability, golang, api-design">
-<meta name="description" content="How we built a travel search engine that served 450,000 requests per minute under 300ms, and what I’d do differently today.">
+<title>Who is Paying For Other People&#39;s AI? | Margins and Throughput</title>
+<meta name="keywords" content="">
+<meta name="description" content="AI is not replacing the software — it is replacing the user. And someone is footing the backend bill.">
 <meta name="author" content="M. Utku Altinkaya">
-<link rel="canonical" href="//localhost:1313/posts/metglobal/">
+<link rel="canonical" href="//localhost:1313/posts/ai-cost/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.65c6102b96a2f43855b3b5347b7909dba711dec4cc692de8c21343c7b7913950.css" integrity="sha256-ZcYQK5ai9DhVs7U0e3kJ26cR3sTMaS3owhNDx7eROVA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="//localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="//localhost:1313/posts/metglobal/">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/ai-cost/">
 <noscript>
     <style>
         #theme-toggle,
@@ -50,25 +50,20 @@
     },
   };
 </script>
-<meta property="og:url" content="//localhost:1313/posts/metglobal/">
+<meta property="og:url" content="//localhost:1313/posts/ai-cost/">
   <meta property="og:site_name" content="Margins and Throughput">
-  <meta property="og:title" content="Serving 450,000 requests per minute in HotelsPro">
-  <meta property="og:description" content="How we built a travel search engine that served 450,000 requests per minute under 300ms, and what I’d do differently today.">
+  <meta property="og:title" content="Who is Paying For Other People&#39;s AI?">
+  <meta property="og:description" content="AI is not replacing the software — it is replacing the user. And someone is footing the backend bill.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2018-10-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2018-10-01T00:00:00+00:00">
-    <meta property="article:tag" content="Cto-Journal">
-    <meta property="article:tag" content="Travel-Tech">
-    <meta property="article:tag" content="Scalability">
-    <meta property="article:tag" content="Golang">
-    <meta property="article:tag" content="Api-Design">
-    <meta property="og:image" content="//localhost:1313/images/hpro.jpg">
+    <meta property="article:published_time" content="2025-11-19T03:46:55+03:00">
+    <meta property="article:modified_time" content="2025-11-19T03:46:55+03:00">
+    <meta property="og:image" content="//localhost:1313/images/cost.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="//localhost:1313/images/hpro.jpg">
-<meta name="twitter:title" content="Serving 450,000 requests per minute in HotelsPro">
-<meta name="twitter:description" content="How we built a travel search engine that served 450,000 requests per minute under 300ms, and what I’d do differently today.">
+<meta name="twitter:image" content="//localhost:1313/images/cost.jpg">
+<meta name="twitter:title" content="Who is Paying For Other People&#39;s AI?">
+<meta name="twitter:description" content="AI is not replacing the software — it is replacing the user. And someone is footing the backend bill.">
 
 
 <script type="application/ld+json">
@@ -85,8 +80,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Serving 450,000 requests per minute in HotelsPro",
-      "item": "//localhost:1313/posts/metglobal/"
+      "name": "Who is Paying For Other People's AI?",
+      "item": "//localhost:1313/posts/ai-cost/"
     }
   ]
 }
@@ -95,24 +90,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Serving 450,000 requests per minute in HotelsPro",
-  "name": "Serving 450,000 requests per minute in HotelsPro",
-  "description": "How we built a travel search engine that served 450,000 requests per minute under 300ms, and what I’d do differently today.",
+  "headline": "Who is Paying For Other People's AI?",
+  "name": "Who is Paying For Other People\u0027s AI?",
+  "description": "AI is not replacing the software — it is replacing the user. And someone is footing the backend bill.",
   "keywords": [
-    "cto-journal", "travel-tech", "scalability", "golang", "api-design"
+    
   ],
-  "articleBody": "In 2017, I joined Metglobal, a major travel tech company with $350M+ in revenue, as Chief Technology Officer. My mission was clear: rebuild the core search and distribution engine to meet modern performance demands.\nWe were facing a bottleneck — not just in raw throughput, but in flexibility. Every change took too long to propagate, and scaling wasn’t linear. Here’s what we did — and what I learned.\n🚀 Building a High-Performance Travel Search Engine We rebuilt the search platform with:\nGo as the service language Bigtable as our low-latency storage layer GRPC for fast inter-service communication The result?\nWe hit 300,000 responses per minute, all under 300ms, using fewer than 20 VMs.\nThis brought a 90% drop in server costs and almost linear scaling.\nIt was the most performant backend I’d ever deployed.\n🧠 The Hard Parts (and What I’d Change) 1. Google’s Bigtable is brilliant — but brutal without planning Bigtable offered the speed we needed, but schema design was critical. When patterns shifted, re-architecting keys was painful.\nIf I were to do it again, I’d:\nAdd a caching layer earlier (even with low latency storage) Abstract more query logic from table structure 2. Auto-SDK Generation Pays Off We built an OAPI-based system that generated SDKs for different teams. It improved adoption and consistency across products.\nToday, I’d go further:\nUse Buf Connect or OpenAPI + Typescript SDKs directly Treat internal APIs like products — with versioning, docs, and test harnesses 3. Rule Engines Must Be Fast and Flexible We developed a product-level rule engine that adjusted prices and filters by hotel, room type, currency, provider, etc. It was powerful — but tuning it took deep domain alignment.\nNow, I’d build this with:\nCode-defined rules + low-code overrides Integrated analytics to see the impact of each rule 📊 Impact Beyond Tech The real win wasn’t just throughput.\nIt was how these decisions affected margin, market speed, and partner confidence.\nFast systems reduce retries, lower infrastructure bills, and increase the odds of conversion. In B2B travel, that matters more than ever.\n🧭 What This Taught Me as a CTO Performance alone isn’t enough. Performance that aligns with business strategy is. Developer experience is key to scalability — SDKs, APIs, and documentation aren’t luxuries. Building for throughput forces you to simplify smartly — and abstract wisely. This project ultimately played a big role in the company’s acquisition by GoGlobal.\nToday, those same principles shape the foundation of a new project — the travel distribution platform I’m now building from scratch.\nIf you’re scaling a B2B system — in travel or otherwise — let’s connect. I’ve made all the mistakes already.\n",
-  "wordCount" : "440",
+  "articleBody": "We’ve all seen the demos.\nA user chats with an AI agent and gets a perfectly planned vacation.\nThe interface is magical. Seamless. Effortless.\nBut here’s the real question:\nWhat is happening behind the scenes — and who is paying for it?\nSpoiler: It’s not the AI company. It’s you.\n🧠 AI Is Not Replacing Software — It’s Replacing the User There is a growing misconception in travel tech:\n“AI will replace the booking engines.”\nNo.\nAI does zero availability computation.\nLLMs cannot evaluate millions of rate combinations or room contracts.\nWhat AI does is:\ninterpret user intent break it into multiple sub-questions call booking APIs repeatedly ask for more data until it can confidently answer This means AI replaces the user, not the travel stack.\nThe backend still does all the work — just 5–10× more of it.\n🔍 Welcome to RAG: Retriever-Augmented Generation When an AI agent tries to answer:\n“Show me hotels in Barcelona under €150 with a sea view and free cancellation.”\nIt doesn’t send one availability request.\nIt sends many:\nretrieve price buckets retrieve cancellation policies retrieve board types retrieve room-level metadata check availability again to confirm re-filter after user clarification repeat steps for multiple suppliers This is the RAG pipeline:\nRetrieve → Reason → Retrieve → Answer.\n📈 The impact: A search that used to cost $0.01 now easily becomes $0.05–$0.10.\nMultiply by thousands of RAG calls per hour, per OTA, per partner…\nAnd suddenly your infrastructure cost explodes — not the AI company’s.\n🤖 AI Has Lowered the Bar for Crawlers Even if your platform is not using RAG internally, you’re still affected.\nWhy?\nBecause AI tools make screen scraping and crawling far easier. Anybody can vibe code a crawler in a few hours.\nCompetitor intelligence startups can now spin up:\nprice crawlers rate-parity compliance bots availability testers optimization scripts content diff bots …with almost no engineering.\nBefore LLMs, building these tools required real engineering talent.\nNow:\nGPT writes your crawler Cloudflare proxies it A $5/month server runs it A new “competitive intelligence company” appears every week Your search API becomes the data source for dozens of third parties —\nmany of whom you will never know about.\nResult: Your infrastructure is working harder than ever,\nfor people who are not even your customers.\n💣 The Hidden Cost Explosion in Travel Distribution Let’s summarize the problem:\nAI agents multiply search traffic.\nOne user → many backend calls.\nCrawlers and scrapers multiply traffic further.\nZero friction to build, cheap to run.\nLegacy booking engines were not designed for multi-agent LLM usage.\nThey choke under unpredictable load.\nSearch is already the most expensive part of travel distribution.\nAI turns an expensive operation into a very expensive one.\nMost systems pay $50–$100 per million searches.\nWith RAG, that becomes $300–$700.\nWho pays?\nBedbanks. Consolidators. OTAs. Suppliers.\nEveryone except the AI companies.\n🧵 The New Problem AI Creates (That Nobody Is Talking About) Travel is one of the few industries where:\nresults depend on real-time data prices change constantly availability shifts instantly suppliers and contracts are complex merging/dedupe is computationally heavy LLM interfaces don’t simplify this.\nThey stress the infrastructure harder.\nAI creates a backend problem — not a UI problem. And this is exactly why efficient, low-cost, ultra-fast availability engines will decide which travel companies survive.\n📌 Final Thought AI looks magical.\nBut someone is paying the price for the magic.\nToday, that someone is the bedbank, wholesaler, or OTA running the availability API.\nSearch cost is becoming the biggest hidden expense in travel.\nAI is accelerating it.\nAnd the industry isn’t prepared.\nIn future posts, I will explain:\nwhy AI-era search load increases 5–10× how to reduce cost per million search by 100× how to build RAG-friendly availability caches and why most travel systems will break under AI load Stay tuned.\n",
+  "wordCount" : "636",
   "inLanguage": "en",
-  "image":"//localhost:1313/images/hpro.jpg","datePublished": "2018-10-01T00:00:00Z",
-  "dateModified": "2018-10-01T00:00:00Z",
+  "image":"//localhost:1313/images/cost.jpg","datePublished": "2025-11-19T03:46:55+03:00",
+  "dateModified": "2025-11-19T03:46:55+03:00",
   "author":{
     "@type": "Person",
     "name": "M. Utku Altinkaya"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "//localhost:1313/posts/metglobal/"
+    "@id": "//localhost:1313/posts/ai-cost/"
   },
   "publisher": {
     "@type": "Organization",
@@ -207,96 +202,171 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Serving 450,000 requests per minute in HotelsPro
+      Who is Paying For Other People&#39;s AI?
     </h1>
-    <div class="post-meta"><span title='2018-10-01 00:00:00 +0000 UTC'>October 1, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;M. Utku Altinkaya
+    <div class="post-description">
+      AI is not replacing the software — it is replacing the user. And someone is footing the backend bill.
+    </div>
+    <div class="post-meta"><span title='2025-11-19 03:46:55 +0300 +03'>November 19, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;M. Utku Altinkaya
 
 </div>
   </header> 
 <figure class="entry-cover">
-        <img loading="eager" src="//localhost:1313/images/hpro.jpg" alt="Nodes">
+        <img loading="eager" src="//localhost:1313/images/cost.jpg" alt="AI cost">
         
 </figure>
-  <div class="post-content"><p>In 2017, I joined <strong>Metglobal</strong>, a major travel tech company with $350M+ in revenue, as Chief Technology Officer. My mission was clear: rebuild the core search and distribution engine to meet modern performance demands.</p>
-<p>We were facing a bottleneck — not just in raw throughput, but in <em>flexibility</em>. Every change took too long to propagate, and scaling wasn’t linear. Here&rsquo;s what we did — and what I learned.</p>
+  <div class="post-content"><p>We’ve all seen the demos.<br>
+A user chats with an AI agent and gets a perfectly planned vacation.<br>
+The interface is magical. Seamless. Effortless.</p>
+<p>But here’s the real question:</p>
+<p><strong>What is happening behind the scenes — and who is paying for it?</strong></p>
+<p>Spoiler: <em>It’s not the AI company. It’s you.</em></p>
 <hr>
-<h3 id="-building-a-high-performance-travel-search-engine">🚀 Building a High-Performance Travel Search Engine<a hidden class="anchor" aria-hidden="true" href="#-building-a-high-performance-travel-search-engine">#</a></h3>
-<p>We rebuilt the search platform with:</p>
-<ul>
-<li><strong>Go</strong> as the service language</li>
-<li><strong>Bigtable</strong> as our low-latency storage layer</li>
-<li><strong>GRPC</strong> for fast inter-service communication</li>
-</ul>
-<p>The result?</p>
+<h2 id="-ai-is-not-replacing-software--its-replacing-the-user">🧠 AI Is Not Replacing Software — It’s Replacing the User<a hidden class="anchor" aria-hidden="true" href="#-ai-is-not-replacing-software--its-replacing-the-user">#</a></h2>
+<p>There is a growing misconception in travel tech:</p>
 <blockquote>
-<p>We hit <strong>300,000 responses per minute</strong>, all under <strong>300ms</strong>, using fewer than <strong>20 VMs</strong>.<br>
-This brought a <strong>90% drop in server costs</strong> and almost <strong>linear scaling</strong>.</p></blockquote>
-<p>It was the most performant backend I’d ever deployed.</p>
-<hr>
-<h3 id="-the-hard-parts-and-what-id-change">🧠 The Hard Parts (and What I&rsquo;d Change)<a hidden class="anchor" aria-hidden="true" href="#-the-hard-parts-and-what-id-change">#</a></h3>
-<h4 id="1-google">1. <strong>Google&rsquo;s Bigtable is brilliant — but brutal without planning</strong><a hidden class="anchor" aria-hidden="true" href="#1-google">#</a></h4>
-<p>Bigtable offered the speed we needed, but schema design was critical. When patterns shifted, re-architecting keys was painful.</p>
-<p>If I were to do it again, I&rsquo;d:</p>
+<p>“AI will replace the booking engines.”</p></blockquote>
+<p>No.<br>
+AI does <strong>zero availability computation</strong>.<br>
+LLMs cannot evaluate millions of rate combinations or room contracts.</p>
+<p>What AI <em>does</em> is:</p>
 <ul>
-<li>Add a <strong>caching layer</strong> earlier (even with low latency storage)</li>
-<li>Abstract more query logic from table structure</li>
+<li>interpret user intent</li>
+<li>break it into multiple sub-questions</li>
+<li>call booking APIs repeatedly</li>
+<li>ask for more data until it can confidently answer</li>
 </ul>
-<h4 id="2-auto-sdk-generation-pays-off">2. <strong>Auto-SDK Generation Pays Off</strong><a hidden class="anchor" aria-hidden="true" href="#2-auto-sdk-generation-pays-off">#</a></h4>
-<p>We built an OAPI-based system that generated SDKs for different teams. It improved adoption and consistency across products.</p>
-<p>Today, I’d go further:</p>
+<p>This means <strong>AI replaces the user</strong>, not the travel stack.</p>
+<p>The backend still does all the work — <em>just 5–10× more of it.</em></p>
+<hr>
+<h2 id="-welcome-to-rag-retriever-augmented-generation">🔍 Welcome to RAG: Retriever-Augmented Generation<a hidden class="anchor" aria-hidden="true" href="#-welcome-to-rag-retriever-augmented-generation">#</a></h2>
+<p>When an AI agent tries to answer:</p>
+<blockquote>
+<p>“Show me hotels in Barcelona under €150 with a sea view and free cancellation.”</p></blockquote>
+<p>It doesn’t send <em>one</em> availability request.<br>
+It sends <strong>many</strong>:</p>
 <ul>
-<li>Use <strong>Buf Connect</strong> or <strong>OpenAPI + Typescript SDKs</strong> directly</li>
-<li>Treat internal APIs like products — with versioning, docs, and test harnesses</li>
+<li>retrieve price buckets</li>
+<li>retrieve cancellation policies</li>
+<li>retrieve board types</li>
+<li>retrieve room-level metadata</li>
+<li>check availability again to confirm</li>
+<li>re-filter after user clarification</li>
+<li>repeat steps for multiple suppliers</li>
 </ul>
-<h4 id="3-rule-engines-must-be-fast-and-flexible">3. <strong>Rule Engines Must Be Fast and Flexible</strong><a hidden class="anchor" aria-hidden="true" href="#3-rule-engines-must-be-fast-and-flexible">#</a></h4>
-<p>We developed a <strong>product-level rule engine</strong> that adjusted prices and filters by hotel, room type, currency, provider, etc. It was powerful — but tuning it took deep domain alignment.</p>
-<p>Now, I’d build this with:</p>
+<p>This is the <strong>RAG pipeline</strong>:<br>
+Retrieve → Reason → Retrieve → Answer.</p>
+<h3 id="-the-impact">📈 The impact:<a hidden class="anchor" aria-hidden="true" href="#-the-impact">#</a></h3>
+<p>A search that used to cost <strong>$0.01</strong> now easily becomes <strong>$0.05–$0.10</strong>.</p>
+<p>Multiply by thousands of RAG calls per hour, per OTA, per partner…</p>
+<p>And suddenly <strong>your infrastructure cost explodes — not the AI company’s.</strong></p>
+<hr>
+<h2 id="-ai-has-lowered-the-bar-for-crawlers">🤖 AI Has Lowered the Bar for Crawlers<a hidden class="anchor" aria-hidden="true" href="#-ai-has-lowered-the-bar-for-crawlers">#</a></h2>
+<p>Even if your platform is not using RAG internally, you’re still affected.</p>
+<p>Why?</p>
+<p>Because AI tools make <strong>screen scraping and crawling far easier</strong>. Anybody can vibe code a crawler in a few hours.</p>
+<p>Competitor intelligence startups can now spin up:</p>
 <ul>
-<li><strong>Code-defined rules + low-code overrides</strong></li>
-<li>Integrated analytics to see the impact of each rule</li>
+<li>price crawlers</li>
+<li>rate-parity compliance bots</li>
+<li>availability testers</li>
+<li>optimization scripts</li>
+<li>content diff bots</li>
 </ul>
-<hr>
-<h3 id="-impact-beyond-tech">📊 Impact Beyond Tech<a hidden class="anchor" aria-hidden="true" href="#-impact-beyond-tech">#</a></h3>
-<p>The real win wasn’t just throughput.<br>
-It was how these decisions affected <strong>margin</strong>, <strong>market speed</strong>, and <strong>partner confidence</strong>.</p>
-<p>Fast systems reduce retries, lower infrastructure bills, and increase the odds of conversion. In B2B travel, that matters more than ever.</p>
-<hr>
-<h3 id="-what-this-taught-me-as-a-cto">🧭 What This Taught Me as a CTO<a hidden class="anchor" aria-hidden="true" href="#-what-this-taught-me-as-a-cto">#</a></h3>
+<p>…with almost no engineering.</p>
+<p>Before LLMs, building these tools required real engineering talent.<br>
+Now:</p>
 <ul>
-<li>Performance alone isn’t enough. <strong>Performance that aligns with business strategy</strong> is.</li>
-<li>Developer experience is key to scalability — SDKs, APIs, and documentation aren’t luxuries.</li>
-<li>Building for throughput forces you to <strong>simplify smartly</strong> — and <strong>abstract wisely</strong>.</li>
+<li>GPT writes your crawler</li>
+<li>Cloudflare proxies it</li>
+<li>A $5/month server runs it</li>
+<li>A new “competitive intelligence company” appears every week</li>
 </ul>
+<p>Your search API becomes the data source for dozens of third parties —<br>
+many of whom you will never know about.</p>
+<h3 id="result">Result:<a hidden class="anchor" aria-hidden="true" href="#result">#</a></h3>
+<p>Your infrastructure is working <strong>harder than ever</strong>,<br>
+for <strong>people who are not even your customers</strong>.</p>
 <hr>
-<p>This project ultimately played a big role in the company’s acquisition by GoGlobal.<br>
-Today, those same principles shape the foundation of a new project — the travel distribution platform I’m now building from scratch.</p>
-<p>If you&rsquo;re scaling a B2B system — in travel or otherwise — let’s connect. I’ve made all the mistakes already.</p>
+<h2 id="-the-hidden-cost-explosion-in-travel-distribution">💣 The Hidden Cost Explosion in Travel Distribution<a hidden class="anchor" aria-hidden="true" href="#-the-hidden-cost-explosion-in-travel-distribution">#</a></h2>
+<p>Let’s summarize the problem:</p>
+<ol>
+<li>
+<p><strong>AI agents multiply search traffic.</strong><br>
+One user → many backend calls.</p>
+</li>
+<li>
+<p><strong>Crawlers and scrapers multiply traffic further.</strong><br>
+Zero friction to build, cheap to run.</p>
+</li>
+<li>
+<p><strong>Legacy booking engines were not designed for multi-agent LLM usage.</strong><br>
+They choke under unpredictable load.</p>
+</li>
+<li>
+<p><strong>Search is already the most expensive part of travel distribution.</strong><br>
+AI turns an expensive operation into a <em>very</em> expensive one.</p>
+</li>
+<li>
+<p><strong>Most systems pay $50–$100 per million searches.</strong><br>
+With RAG, that becomes $300–$700.</p>
+</li>
+<li>
+<p><strong>Who pays?</strong><br>
+Bedbanks. Consolidators. OTAs. Suppliers.<br>
+Everyone <em>except</em> the AI companies.</p>
+</li>
+</ol>
 <hr>
+<h2 id="-the-new-problem-ai-creates-that-nobody-is-talking-about">🧵 The New Problem AI Creates (That Nobody Is Talking About)<a hidden class="anchor" aria-hidden="true" href="#-the-new-problem-ai-creates-that-nobody-is-talking-about">#</a></h2>
+<p>Travel is one of the few industries where:</p>
+<ul>
+<li>results depend on real-time data</li>
+<li>prices change constantly</li>
+<li>availability shifts instantly</li>
+<li>suppliers and contracts are complex</li>
+<li>merging/dedupe is computationally heavy</li>
+</ul>
+<p>LLM interfaces don’t simplify this.</p>
+<p>They <em>stress the infrastructure harder.</em></p>
+<h3 id="ai-creates-a-backend-problem--not-a-ui-problem">AI creates a <em>backend problem</em> — not a UI problem.<a hidden class="anchor" aria-hidden="true" href="#ai-creates-a-backend-problem--not-a-ui-problem">#</a></h3>
+<p>And this is exactly why efficient, low-cost, ultra-fast availability engines will decide which travel companies survive.</p>
+<hr>
+<h2 id="-final-thought">📌 Final Thought<a hidden class="anchor" aria-hidden="true" href="#-final-thought">#</a></h2>
+<p>AI looks magical.<br>
+But someone is paying the price for the magic.</p>
+<p><strong>Today, that someone is the bedbank, wholesaler, or OTA running the availability API.</strong></p>
+<p>Search cost is becoming the biggest hidden expense in travel.<br>
+AI is accelerating it.<br>
+And the industry isn’t prepared.</p>
+<p>In future posts, I will explain:</p>
+<ul>
+<li>why AI-era search load increases 5–10×</li>
+<li>how to reduce cost per million search by 100×</li>
+<li>how to build RAG-friendly availability caches</li>
+<li>and why most travel systems will break under AI load</li>
+</ul>
+<p>Stay tuned.</p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="//localhost:1313/tags/cto-journal/">Cto-Journal</a></li>
-      <li><a href="//localhost:1313/tags/travel-tech/">Travel-Tech</a></li>
-      <li><a href="//localhost:1313/tags/scalability/">Scalability</a></li>
-      <li><a href="//localhost:1313/tags/golang/">Golang</a></li>
-      <li><a href="//localhost:1313/tags/api-design/">Api-Design</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="//localhost:1313/posts/car-rental/">
-    <span class="title">« Prev</span>
+  <a class="next" href="//localhost:1313/posts/hidden-cost-of-look-to-book/">
+    <span class="title">Next »</span>
     <br>
-    <span>Why We Moved to Microservices at Yolcu360</span>
+    <span>The Hidden Cost of Look to Book</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on x"
-            href="https://x.com/intent/tweet/?text=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro&amp;url=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f&amp;hashtags=cto-journal%2ctravel-tech%2cscalability%2cgolang%2capi-design">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on x"
+            href="https://x.com/intent/tweet/?text=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f&amp;url=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -304,8 +374,8 @@ Today, those same principles shape the foundation of a new project — the trave
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f&amp;title=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro&amp;summary=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro&amp;source=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f&amp;title=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f&amp;summary=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f&amp;source=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -313,8 +383,8 @@ Today, those same principles shape the foundation of a new project — the trave
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on reddit"
-            href="https://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f&title=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on reddit"
+            href="https://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f&title=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -322,8 +392,8 @@ Today, those same principles shape the foundation of a new project — the trave
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -331,8 +401,8 @@ Today, those same principles shape the foundation of a new project — the trave
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on whatsapp"
-            href="https://api.whatsapp.com/send?text=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro%20-%20%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on whatsapp"
+            href="https://api.whatsapp.com/send?text=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f%20-%20%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -340,8 +410,8 @@ Today, those same principles shape the foundation of a new project — the trave
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on telegram"
-            href="https://telegram.me/share/url?text=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro&amp;url=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on telegram"
+            href="https://telegram.me/share/url?text=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f&amp;url=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -349,8 +419,8 @@ Today, those same principles shape the foundation of a new project — the trave
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Serving 450,000 requests per minute in HotelsPro on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Serving%20450%2c000%20requests%20per%20minute%20in%20HotelsPro&u=%2f%2flocalhost%3a1313%2fposts%2fmetglobal%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Who is Paying For Other People&#39;s AI? on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Who%20is%20Paying%20For%20Other%20People%27s%20AI%3f&u=%2f%2flocalhost%3a1313%2fposts%2fai-cost%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Car-Rental on Margins and Throughput</title><link>/tags/car-rental/</link><description>Recent content in Car-Rental on Margins and Throughput</description><generator>Hugo -- 0.147.8</generator><language>en</language><lastBuildDate>Sun, 14 Mar 2021 03:46:55 +0300</lastBuildDate><atom:link href="/tags/car-rental/index.xml" rel="self" type="application/rss+xml"/><item><title>CTO Journal #2: Transforming a Car Rental Stack at Yolcu360</title><link>/posts/yolcu-stack/</link><pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate><guid>/posts/yolcu-stack/</guid><description>The journey from monolith to microservices, integrating GIS logic, and launching a GPT-4 powered chatbot.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Car-Rental on Margins and Throughput</title>
+    <link>//localhost:1313/tags/car-rental/</link>
+    <description>Recent content in Car-Rental on Margins and Throughput</description>
+    <generator>Hugo -- 0.147.8</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Mar 2021 03:46:55 +0300</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/car-rental/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTO Journal #2: Transforming a Car Rental Stack at Yolcu360</title>
+      <link>//localhost:1313/posts/yolcu-stack/</link>
+      <pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate>
+      <guid>//localhost:1313/posts/yolcu-stack/</guid>
+      <description>The journey from monolith to microservices, integrating GIS logic, and launching a GPT-4 powered chatbot.</description>
+    </item>
+  </channel>
+</rss>

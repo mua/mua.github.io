@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Categories on Margins and Throughput</title><link>/categories/</link><description>Recent content in Categories on Margins and Throughput</description><generator>Hugo -- 0.147.8</generator><language>en</language><lastBuildDate>Sun, 14 Mar 2021 03:46:55 +0300</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>CTO Journal</title><link>/categories/cto-journal/</link><pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate><guid>/categories/cto-journal/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on Margins and Throughput</title>
+    <link>//localhost:1313/categories/</link>
+    <description>Recent content in Categories on Margins and Throughput</description>
+    <generator>Hugo -- 0.147.8</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Mar 2021 03:46:55 +0300</lastBuildDate>
+    <atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTO Journal</title>
+      <link>//localhost:1313/categories/cto-journal/</link>
+      <pubDate>Sun, 14 Mar 2021 03:46:55 +0300</pubDate>
+      <guid>//localhost:1313/categories/cto-journal/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
